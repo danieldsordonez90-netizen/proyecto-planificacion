@@ -23,6 +23,7 @@ process_data = lambda array, keys: [
     for item in array
 ]
 
+# Imprime el resultado transformado listo para el parseo de PHP
 print(
     process_data(
         read_data(),
