@@ -30,6 +30,7 @@ estudiante('20221000518', 'Beatriz Elena Valladares', 'bvalladares@unah.hn', 'in
 estudiante('20231000519', 'Héctor Manuel Turcios', 'hturcios@unah.hn', 'ingeniería en sistemas', 66).
 
 
+
 profesor('0001', 'Miguel Angel Rodas', 'miguel.rodas@unah.hn').
 profesor('0002', 'Juan Andres Ceballos', 'juan.ceballos@unah.hn').
 profesor('0003', 'Mario José Gutierrez', 'mario.gutierrez@unah.hn').
@@ -45,14 +46,57 @@ profesor('0012', 'Daniela Irene Argueta', 'daniela.argueta@unah.hn').
 profesor('0013', 'Marco Antonio Bonilla', 'marco.bonilla@unah.hn').
 profesor('0014', 'Sara Victoria Lanza', 'sara.lanza@unah.hn').
 
-materia('isc101', ' ','Introduccion a la ingeniería en sistemas Computacionales', 4).
-materia('isc102', ' ','Programación Estructurada', 4).
-materia('isc103', ' ','Programación Orientada a Objetos', 5).
-materia('isc204', ' ','Paradigmas de Programación', 4).
-materia('isc211', ' ','Estructuras de Datos', 4).
-materia('isc321', ' ','Fundamentos Bases de Datos', 5).
-materia('isc331', ' ','Redes de Datos I', 4).
-materia('fs100', ' ','Fisica General I', 5).
+
+materia('ISC-101', 'Introduccion a la Ingenieria en Sistemas Computacionales', 4, 'Ninguno').
+materia('EG-011', 'Espanol General', 4, 'Ninguno').
+materia('MM-110', 'Matematica I', 5, 'Ninguno').
+materia('SC-101', 'Sociologia', 4, 'Ninguno').
+materia('IN-101', 'Optativa I: Campo de las Lenguas Extranjeras (Ingles I)', 4, 'Ninguno').
+materia('ISC-102', 'Programacion Estructurada', 4, 'ISC-101').
+materia('FF-101', 'Filosofia', 4, 'Ninguno').
+materia('MM-111', 'Geometria y Trigonometria', 5, 'Ninguno').
+materia('IN-102', 'Ingles II', 4, 'IN-101').
+materia('ISC-103', 'Programacion Orientada a Objetos', 5, 'ISC-102').
+materia('MM-201', 'Calculo I', 5, 'MM-110,MM-111').
+materia('MM-211', 'Vectores y Matrices', 3, 'MM-110,MM-111').
+materia('IN-103', 'Ingles III', 4, 'IN-102').
+materia('MM-420', 'Matematica Discreta', 4, 'MM-110').
+materia('MM-202', 'Calculo II', 5, 'MM-201,MM-211').
+materia('FS-100', 'Fisica I', 5, 'MM-212,MM-211').
+materia('HH-101', 'Historia de Honduras', 4, 'Ninguno').
+materia('ISC-204', 'Paradigmas de Programacion', 4, 'ISC-103').
+materia('MM-401', 'Estadistica I', 3, 'MM-202').
+materia('FS-200', 'Fisica II', 5, 'FS-100,MM-202').
+materia('ISC-211', 'Estructuras de Datos', 4, 'MM-420,MM-211,ISC-103').
+materia('AGE-102', 'Administracion', 4, 'MM-401').
+materia('IE-326', 'Instalaciones Electricas para Centros de Datos', 4, 'FS-200').
+materia('ISC-321', 'Fundamentos de Base de Datos', 5, 'MM-420').
+materia('ISC-351', 'Contabilidad Financiera', 4, 'AGE-102').
+materia('ISC-331', 'Redes de Datos I', 4, 'IE-326').
+materia('ISC-333', 'Sistemas Operativos I', 4, 'ISC-211').
+materia('ISC-312', 'Teoria de la Computacion', 4, 'ISC-211,ISC-204').
+materia('ISC-341', 'Sistemas de Informacion', 4, 'ISC-351').
+materia('ISC-332', 'Redes de Datos II', 4, 'ISC-331').
+materia('ISC-334', 'Sistemas Operativos II', 4, 'ISC-333').
+materia('ISC-305', 'Programacion Web', 4, 'ISC-321').
+materia('ISC-313', 'Compiladores', 4, 'ISC-312').
+materia('ISC-306', 'Analisis de Requerimientos', 4, 'ISC-341,ISC-321,ISC-334').
+materia('ISC-336', 'Diseno Digital', 4, 'ISC-334').
+materia('ISC-407', 'Programacion Movil', 5, 'ISC-305').
+materia('ISC-414', 'Inteligencia Artificial', 4, 'ISC-313,MM-401').
+materia('ISC-435', 'Administracion de Servidores', 4, 'ISC-334,ISC-332').
+materia('ISC-437', 'Arquitectura de Computadoras', 4, 'ISC-336').
+materia('ISC-408', 'Ingenieria del Software', 4, 'ISC-306,ISC-407').
+materia('ISC-422', 'Administracion de Base de Datos', 4, 'ISC-321').
+materia('ISC-442', 'Seguridad Informatica', 4, 'ISC-435').
+materia('ISC-443', 'Industria de TI', 4, 'ISC-306').
+materia('ISC-409', 'Calidad de Software', 4, 'ISC-408').
+materia('ISC-423', 'Ciencia de Datos', 4, 'ISC-422').
+materia('ISC-415', 'Tecnologias Emergentes', 4, 'ISC-305,ISC-437,ISC-332').
+materia('ISC-445', 'Proyectos de TI', 4, 'ISC-443,ISC-442').
+materia('ISC-552', 'Seminario de Investigacion', 3, 'ISC-415,ISC-445,ISC-423').
+materia('ISC-544', 'Auditoria Informatica', 4, 'ISC-442,ISC-306').
+materia('ISC-546', 'Ejecucion de Proyectos de TI', 4, 'ISC-445').
 
 seccion('isc101', '0700', '0001').
 seccion('isc102', '0700', '0001').
@@ -72,6 +116,7 @@ matriculado('20221000761', 'isc103').
 matriculado('20221000762', 'isc101').
 matriculado('20221000761', 'isc101').
 
+
 es_alumno_de(NombreProfesor, NombreEstudiante):-
     profesor(CodigoProfesor, NombreProfesor, _),
     seccion(CodigoMateria, _, CodigoProfesor),
@@ -89,3 +134,11 @@ lista_alumnos_de_profesor(NombreProfesor, ListaAlumnos) :-
 
 lista_alumnos_seccion(NombreProfesor, CodigoMateria, ListaAlumnos) :-
     findall(NombreEstudiante, alumnos_en_seccion_de_profesor(NombreProfesor, CodigoMateria, NombreEstudiante), ListaAlumnos).
+
+clases_de_alumno(NombreEstudiante, NombreMateria):-
+    estudiante(CuentaEstudiante, NombreEstudiante, _, _, _),
+    matriculado(CuentaEstudiante, CodigoMateria),
+    materia(CodigoMateria, _, NombreMateria, _).
+
+lista_clases_matriculadas(NombreEtudiante, ListaMaterias):-
+    findall(NombreMateria, clases_de_alumno(NombreEtudiante, NombreMateria), ListaMaterias).
