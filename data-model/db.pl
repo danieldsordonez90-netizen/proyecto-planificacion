@@ -28,7 +28,7 @@ estudiante('20231000516', 'Sofía Irene Ordóñez', 'sordonez@unah.hn', 'ingenie
 estudiante('20241000517', 'Javier Ignacio Matamoros', 'jmatamoros@unah.hn', 'ingeniería en sistemas', 71).
 estudiante('20221000518', 'Beatriz Elena Valladares', 'bvalladares@unah.hn', 'ingeniería en sistemas', 80).
 estudiante('20231000519', 'Héctor Manuel Turcios', 'hturcios@unah.hn', 'ingeniería en sistemas', 66).
-estudiante('', '', '', '',).
+
 
 
 profesor('0001', 'Miguel Angel Rodas', 'miguel.rodas@unah.hn').
@@ -91,4 +91,11 @@ lista_alumnos_de_profesor(NombreProfesor, ListaAlumnos) :-
 lista_alumnos_seccion(NombreProfesor, CodigoMateria, ListaAlumnos) :-
     findall(NombreEstudiante, alumnos_en_seccion_de_profesor(NombreProfesor, CodigoMateria, NombreEstudiante), ListaAlumnos).
 
+clases_de_alumno(NombreEstudiante, NombreMateria):-
+    estudiante(CuentaEstudiante, NombreEstudiante, _, _, _),
+    matriculado(CuentaEstudiante, CodigoMateria),
+    materia(CodigoMateria, _, NombreMateria, _).
+
+lista_clases_matriculadas(NombreEtudiante, ListaMaterias):-
+    findall(NombreMateria, clases_de_alumno(NombreEtudiante, NombreMateria), ListaMaterias).
 
