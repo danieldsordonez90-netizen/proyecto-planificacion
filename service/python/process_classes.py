@@ -4,13 +4,12 @@
 
 import sys
 
-# Definición de propiedades para la entidad de estudiantes
+# Definición de propiedades para la entidad de materias
 keys = [
-    "estudiante_cuenta",
-    "estudiante_name",
-    "estudiante_email",
-    "estudiante_carrera",
-    "estudiante_indice",
+    "materia_codigo",
+    "materia_nombre",
+    "materia_uv",
+    "materia_prerrequisitos"
 ]
 
 read_data = lambda: [line for line in str(sys.stdin.read()).strip().split("\n") if line.strip()]
@@ -23,7 +22,7 @@ process_data = lambda array, keys: [
     for item in array
 ]
 
-# Imprime el resultado transformado listo para el parseo de PHP
+# Imprime el resultado transformado asegurando el formato compatible con fixJson
 print(
     str(
         process_data(

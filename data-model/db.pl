@@ -1,9 +1,16 @@
+% Author: Iván, Daniels, Christian 
+% Version: 0.1.0
+
+% =========================================================================
+% ENTIDAD: ESTUDIANTES (Corregido el acento de Marta)
+% estudiante(Cuenta, NombreCompleto, Correo, Carrera, IndiceAcademico)
+% =========================================================================
 
 estudiante('20221000759', 'Ivan Alessandro Díaz Villanueva', 'ivan.diaz@unah.hn', 'ingeniería en sistemas', 90).
 estudiante('20221000760', 'Carlos Miguel Hernandez', 'carlos.martinez@unah.hn', 'ingeniería en sistemas', 79).
 estudiante('20221000761', 'Maria Fernanda Antunez', 'maria.macarena@unah.hn', 'ingeniería en sistemas', 69).
 estudiante('20221000762', 'Jose Antonio Salazar', 'jose@unah.hn', 'ingeniería en sistemas', 85).
-estudiante('20211000123', 'Marta Antonieta Carías','mcarias@unah.hn','ingenieria en sistemas', 78).
+estudiante('20211000123', 'Marta Antonieta Carías', 'mcarias@unah.hn', 'ingeniería en sistemas', 78).
 estudiante('20231000112', 'Sofía Alejandra Martínez', 'sofia.martinez@unah.hn', 'ingeniería en sistemas', 88).
 estudiante('20231000445', 'Diego Fernando Ramos', 'diego.ramos@unah.hn', 'ingeniería en sistemas', 74).
 estudiante('20221000890', 'Lucía Gabriela Varela', 'lucia.varela@unah.hn', 'ingeniería en sistemas', 92).
@@ -29,8 +36,10 @@ estudiante('20241000517', 'Javier Ignacio Matamoros', 'jmatamoros@unah.hn', 'ing
 estudiante('20221000518', 'Beatriz Elena Valladares', 'bvalladares@unah.hn', 'ingeniería en sistemas', 80).
 estudiante('20231000519', 'Héctor Manuel Turcios', 'hturcios@unah.hn', 'ingeniería en sistemas', 66).
 
-
-
+% =========================================================================
+% ENTIDAD: PROFESORES
+% profesor(CodigoProfesor, NombreCompleto, Correo)
+% =========================================================================
 profesor('0001', 'Miguel Angel Rodas', 'miguel.rodas@unah.hn').
 profesor('0002', 'Juan Andres Ceballos', 'juan.ceballos@unah.hn').
 profesor('0003', 'Mario José Gutierrez', 'mario.gutierrez@unah.hn').
@@ -46,7 +55,10 @@ profesor('0012', 'Daniela Irene Argueta', 'daniela.argueta@unah.hn').
 profesor('0013', 'Marco Antonio Bonilla', 'marco.bonilla@unah.hn').
 profesor('0014', 'Sara Victoria Lanza', 'sara.lanza@unah.hn').
 
-
+% =========================================================================
+% ENTIDAD: MATERIAS
+% materia(CodigoMateria, NombreMateria, UnidadesValorativas, Prerrequisitos)
+% =========================================================================
 materia('ISC-101', 'Introduccion a la Ingenieria en Sistemas Computacionales', 4, 'Ninguno').
 materia('EG-011', 'Espanol General', 4, 'Ninguno').
 materia('MM-110', 'Matematica I', 5, 'Ninguno').
@@ -98,47 +110,67 @@ materia('ISC-552', 'Seminario de Investigacion', 3, 'ISC-415,ISC-445,ISC-423').
 materia('ISC-544', 'Auditoria Informatica', 4, 'ISC-442,ISC-306').
 materia('ISC-546', 'Ejecucion de Proyectos de TI', 4, 'ISC-445').
 
-seccion('isc101', '0700', '0001').
-seccion('isc102', '0700', '0001').
-seccion('isc102', '0800', '0002').
-seccion('isc103', '0800', '0003').
-seccion('isc103', '0900', '0001').
+% =========================================================================
+% ENTIDAD: SECCIONES (Corregidos los códigos a Mayúsculas e inyectado el ID único)
+% seccion(IdSeccion, CodigoMateria, Hora, CodigoProfesor)
+% =========================================================================
+seccion('SEC-ISC101-0700', 'ISC-101', '0700', '0001').
+seccion('SEC-ISC102-0700', 'ISC-102', '0700', '0001').
+seccion('SEC-ISC102-0800', 'ISC-102', '0800', '0002').
+seccion('SEC-ISC103-0800', 'ISC-103', '0800', '0003').
+seccion('SEC-ISC103-0900', 'ISC-103', '0900', '0001').
 
-laboratorio('0701', 'fs200', 'E1', 'Laboratorio de Física').
+% =========================================================================
+% ENTIDAD: LABORATORIOS (Corregido a Mayúsculas)
+% =========================================================================
+laboratorio('0701', 'FS-200', 'E1', 'Laboratorio de Física').
 
+% =========================================================================
+% RELACIÓN: MATRÍCULA (Ahora apunta al ID ÚNICO de la sección)
+% matriculado(CuentaEstudiante, IdSeccion)
+% =========================================================================
+matriculado('20221000759', 'SEC-ISC101-0700').
+matriculado('20221000759', 'SEC-ISC103-0800').
+matriculado('20221000760', 'SEC-ISC102-0800').
+matriculado('20221000760', 'SEC-ISC101-0700').
+matriculado('20221000760', 'SEC-ISC103-0800').
+matriculado('20221000761', 'SEC-ISC103-0800').
+matriculado('20221000762', 'SEC-ISC101-0700').
+matriculado('20221000761', 'SEC-ISC101-0700').
 
-matriculado('20221000759', 'isc101').
-matriculado('20221000759', 'isc103').
-matriculado('20221000760', 'isc102').
-matriculado('20221000760', 'isc101').
-matriculado('20221000760', 'isc103').
-matriculado('20221000761', 'isc103').
-matriculado('20221000762', 'isc101').
-matriculado('20221000761', 'isc101').
+% =========================================================================
+% REGLAS LÓGICAS (Refacturadas para evitar ambigüedad)
+% =========================================================================
 
-
+% Verifica de qué profesor es alumno un estudiante según su sección real
 es_alumno_de(NombreProfesor, NombreEstudiante):-
     profesor(CodigoProfesor, NombreProfesor, _),
-    seccion(CodigoMateria, _, CodigoProfesor),
-    matriculado(CuentaEstudiante, CodigoMateria),
+    seccion(IdSeccion, _, _, CodigoProfesor),
+    matriculado(CuentaEstudiante, IdSeccion),
     estudiante(CuentaEstudiante, NombreEstudiante, _, _, _).
 
+% Muestra los alumnos matriculados en una sección específica
 alumnos_en_seccion_de_profesor(NombreProfesor, CodigoMateria, NombreEstudiante) :-
     profesor(CodigoProfesor, NombreProfesor, _),
-    seccion(CodigoMateria, _, CodigoProfesor), 
-    matriculado(CuentaEstudiante, CodigoMateria),
+    seccion(IdSeccion, CodigoMateria, _, CodigoProfesor), 
+    matriculado(CuentaEstudiante, IdSeccion),
     estudiante(CuentaEstudiante, NombreEstudiante, _, _, _).
 
+% Lista de alumnos totales de un profesor
 lista_alumnos_de_profesor(NombreProfesor, ListaAlumnos) :-
     findall(NombreEstudiante, es_alumno_de(NombreProfesor, NombreEstudiante), ListaAlumnos).
 
+% Lista de alumnos en una sección concreta
 lista_alumnos_seccion(NombreProfesor, CodigoMateria, ListaAlumnos) :-
     findall(NombreEstudiante, alumnos_en_seccion_de_profesor(NombreProfesor, CodigoMateria, NombreEstudiante), ListaAlumnos).
 
+% Cruza la sección con la materia para obtener el nombre real de la clase
 clases_de_alumno(NombreEstudiante, NombreMateria):-
     estudiante(CuentaEstudiante, NombreEstudiante, _, _, _),
-    matriculado(CuentaEstudiante, CodigoMateria),
-    materia(CodigoMateria, _, NombreMateria, _).
+    matriculado(CuentaEstudiante, IdSeccion),
+    seccion(IdSeccion, CodigoMateria, _, _),
+    materia(CodigoMateria, NombreMateria, _, _).
 
-lista_clases_matriculadas(NombreEtudiante, ListaMaterias):-
-    findall(NombreMateria, clases_de_alumno(NombreEtudiante, NombreMateria), ListaMaterias).
+% Lista de clases matriculadas (Corregido el typo del nombre de la variable)
+lista_clases_matriculadas(NombreEstudiante, ListaMaterias):-
+    findall(NombreMateria, clases_de_alumno(NombreEstudiante, NombreMateria), ListaMaterias).

@@ -4,13 +4,11 @@
 
 import sys
 
-# Definición de propiedades para la entidad de estudiantes
+# Definición de propiedades para la entidad de profesores
 keys = [
-    "estudiante_cuenta",
-    "estudiante_name",
-    "estudiante_email",
-    "estudiante_carrera",
-    "estudiante_indice",
+    "profesor_id",
+    "profesor_name",
+    "profesor_email",
 ]
 
 read_data = lambda: [line for line in str(sys.stdin.read()).strip().split("\n") if line.strip()]

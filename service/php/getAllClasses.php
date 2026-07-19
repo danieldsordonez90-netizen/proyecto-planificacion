@@ -7,17 +7,17 @@
 
 $fixJson = fn($text) => str_replace("'", '"', $text);
 
-$getAllStudentData = fn() =>
+$getAllClassData = fn() =>
     $fixJson(
         shell_exec(
             sprintf(
-                "swipl -s \"%s\" -g \"forall(estudiante(Cue,Nom,Cor,Car,Ind),format('~w,~w,~w,~w,~w~n',[Cue,Nom,Cor,Car,Ind]))\" -t halt | python3 \"%s\"",
+                "swipl -s \"%s\" -g \"forall(materia(Cod,Nom,Uv,Pre),format('~w,~w,~w,\'~w\'~n',[Cod,Nom,Uv,Pre]))\" -t halt | python3 \"%s\"",
                 __DIR__ . "/../../data-model/db.pl",
-                __DIR__ . "/../python/process_students.py"
+                __DIR__ . "/../python/process_classes.py"
             )
         ) ?? ""
     );
 
 return [
-    "getAllStudentData" => $getAllStudentData
+    "getAllClassData" => $getAllClassData
 ];

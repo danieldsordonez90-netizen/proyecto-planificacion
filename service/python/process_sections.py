@@ -4,13 +4,12 @@
 
 import sys
 
-# Definición de propiedades para la entidad de estudiantes
+# Definición de propiedades para las secciones
 keys = [
-    "estudiante_cuenta",
-    "estudiante_name",
-    "estudiante_email",
-    "estudiante_carrera",
-    "estudiante_indice",
+    "seccion_id",
+    "materia_codigo",
+    "seccion_hora",
+    "profesor_codigo"
 ]
 
 read_data = lambda: [line for line in str(sys.stdin.read()).strip().split("\n") if line.strip()]
@@ -23,7 +22,6 @@ process_data = lambda array, keys: [
     for item in array
 ]
 
-# Imprime el resultado transformado listo para el parseo de PHP
 print(
     str(
         process_data(
