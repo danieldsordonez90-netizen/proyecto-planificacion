@@ -3,7 +3,7 @@ estudiante('20221000759', 'Ivan Alessandro Díaz Villanueva', 'ivan.diaz@unah.hn
 estudiante('20221000760', 'Carlos Miguel Hernandez', 'carlos.martinez@unah.hn', 'ingeniería en sistemas', 79).
 estudiante('20221000761', 'Maria Fernanda Antunez', 'maria.macarena@unah.hn', 'ingeniería en sistemas', 69).
 estudiante('20221000762', 'Jose Antonio Salazar', 'jose@unah.hn', 'ingeniería en sistemas', 85).
-estudiante('20211000123', 'Marta Antonieta Carías','mcarias@unah.hn','ingenieria en sistemas', 78).
+estudiante('20211000123', 'Marta Antonieta Carías','mcarias@unah.hn','ingenieía en sistemas', 78).
 estudiante('20231000112', 'Sofía Alejandra Martínez', 'sofia.martinez@unah.hn', 'ingeniería en sistemas', 88).
 estudiante('20231000445', 'Diego Fernando Ramos', 'diego.ramos@unah.hn', 'ingeniería en sistemas', 74).
 estudiante('20221000890', 'Lucía Gabriela Varela', 'lucia.varela@unah.hn', 'ingeniería en sistemas', 92).
@@ -60,7 +60,7 @@ materia('ISC-103', 'Programacion Orientada a Objetos', 5, 'ISC-102').
 materia('MM-201', 'Calculo I', 5, 'MM-110,MM-111').
 materia('MM-211', 'Vectores y Matrices', 3, 'MM-110,MM-111').
 materia('IN-103', 'Ingles III', 4, 'IN-102').
-materia('MM-420', 'Matematica Discreta', 4, 'MM-110').
+materia('MM-420', 'Matematica DISC-reta', 4, 'MM-110').
 materia('MM-202', 'Calculo II', 5, 'MM-201,MM-211').
 materia('FS-100', 'Fisica I', 5, 'MM-212,MM-211').
 materia('HH-101', 'Historia de Honduras', 4, 'Ninguno').
@@ -98,48 +98,44 @@ materia('ISC-552', 'Seminario de Investigacion', 3, 'ISC-415,ISC-445,ISC-423').
 materia('ISC-544', 'Auditoria Informatica', 4, 'ISC-442,ISC-306').
 materia('ISC-546', 'Ejecucion de Proyectos de TI', 4, 'ISC-445').
 
-seccion('isc101', '0700', '0001').
-seccion('isc102', '0700', '0001').
-seccion('isc102', '0800', '0002').
-seccion('isc103', '0800', '0003').
-seccion('isc103', '0900', '0001').
+seccion('ISC101-0700','ISC-101', '0700', '0001').
+seccion('ISC102-0700','ISC-102', '0700', '0001').
+seccion('ISC102-0800','ISC-102', '0800', '0002').
+seccion('ISC103-0800','ISC-103', '0800', '0003').
+seccion('ISC103-0900','ISC-103', '0900', '0001').
 
 laboratorio('0701', 'fs200', 'E1', 'Laboratorio de Física').
 
 
-matriculado('20221000759', 'isc101').
-matriculado('20221000759', 'isc103').
-matriculado('20221000760', 'isc102').
-matriculado('20221000760', 'isc101').
-matriculado('20221000760', 'isc103').
-matriculado('20221000761', 'isc103').
-matriculado('20221000762', 'isc101').
-matriculado('20221000761', 'isc101').
+matriculado('20221000759', 'ISC101-0700', 'ISC-101').
+matriculado('20221000759', 'ISC102-0700', 'ISC-102').
+matriculado('20221000760', 'ISC103-0700', 'ISC-101').
+matriculado('20221000760', 'ISC103-0900', 'ISC-103').
+matriculado('20221000760', 'ISC102-0800', 'ISC-102').
+matriculado('20221000761', 'ISC103-0800', 'ISC-103').
+matriculado('20221000762', 'ISC101-0900', 'ISC-101').
+matriculado('20221000761', 'ISC103-0900', 'ISC-103').
 
-
-es_alumno_de(NombreProfesor, NombreEstudiante):-
+es_alumno_de(NombreProfesor, NombreEstudiante) :-
     profesor(CodigoProfesor, NombreProfesor, _),
-    seccion(CodigoMateria, _, CodigoProfesor),
-    matriculado(CuentaEstudiante, CodigoMateria),
+    seccion(_, _, _, CodigoProfesor),
+    matriculado(CuentaEstudiante, _, _),
     estudiante(CuentaEstudiante, NombreEstudiante, _, _, _).
 
-alumnos_en_seccion_de_profesor(NombreProfesor, CodigoMateria, NombreEstudiante) :-
+alumnos_en_seccion_de_profesor(NombreProfesor, IDSeccion, NombreEstudiante) :-
     profesor(CodigoProfesor, NombreProfesor, _),
-    seccion(CodigoMateria, _, CodigoProfesor), 
-    matriculado(CuentaEstudiante, CodigoMateria),
+    seccion(IDSeccion, _, _, CodigoProfesor), % Aquí se usa IDSeccion
+    matriculado(CuentaEstudiante, IDSeccion, _), % Aquí se usa IDSeccion para filtrar al alumno
     estudiante(CuentaEstudiante, NombreEstudiante, _, _, _).
 
-lista_alumnos_de_profesor(NombreProfesor, ListaAlumnos) :-
-    findall(NombreEstudiante, es_alumno_de(NombreProfesor, NombreEstudiante), ListaAlumnos).
+lista_alumnos_seccion(NombreProfesor, IDSeccion, ListaAlumnos) :-
+    findall(NombreEstudiante, alumnos_en_seccion_de_profesor(NombreProfesor, IDSeccion, NombreEstudiante), ListaAlumnos).
 
-lista_alumnos_seccion(NombreProfesor, CodigoMateria, ListaAlumnos) :-
-    findall(NombreEstudiante, alumnos_en_seccion_de_profesor(NombreProfesor, CodigoMateria, NombreEstudiante), ListaAlumnos).
-
-clases_de_alumno(NombreEstudiante, NombreMateria):-
+clases_de_alumno(NombreEstudiante, NombreMateria) :-
     estudiante(CuentaEstudiante, NombreEstudiante, _, _, _),
-    matriculado(CuentaEstudiante, CodigoMateria),
-    materia(CodigoMateria, _, NombreMateria, _).
+    matriculado(CuentaEstudiante, IDSeccion, CodigoMateria),
+    seccion(IDSeccion, CodigoMateria, _, _),
+    materia(CodigoMateria, NombreMateria, _, _).
 
-lista_clases_matriculadas(NombreEtudiante, ListaMaterias):-
-    findall(NombreMateria, clases_de_alumno(NombreEtudiante, NombreMateria), ListaMaterias).
-
+lista_clases_matriculadas(NombreEstudiante, ListaMaterias) :-
+    findall(NombreMateria, clases_de_alumno(NombreEstudiante, NombreMateria), ListaMaterias).
