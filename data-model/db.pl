@@ -61,6 +61,11 @@ profesor('0014', 'Sara Victoria Lanza', 'sara.lanza@unah.hn').
 
 /*
     HECHO: Materia, estan conformados por un código de materia, su nombre, cantidad de créditos y sus prerrequisitos.
+
+    @author ivan.diaz@unah.hn, danields.olivares@unah.hn
+    @date 2026-07-18
+    @since 2026-07-16
+    @version 0.1.2
 */
 
 materia('ISC-101', 'Introduccion a la Ingenieria en Sistemas Computacionales', 4, 'Ninguno').
@@ -115,7 +120,11 @@ materia('ISC-544', 'Auditoria Informatica', 4, 'ISC-442,ISC-306').
 materia('ISC-546', 'Ejecucion de Proyectos de TI', 4, 'ISC-445').
 
 /*
-    HECHOS: Secciones, estan conformados por un código de sección, código de materia, horario y código de profesor.
+    HECHO: Secciones, estan conformados por un código de sección, código de materia, horario y código de profesor.
+    @author ivan.diaz@unah.hn, danields.olivares@unah.hn
+    @version 0.1.2
+    @date 2026-07-18
+    @since 2026-07-16
 */
 seccion('ISC101-0700','ISC-101', '0700', '0001', 'B2', 'A101').
 seccion('ISC102-0700','ISC-102', '0700', '0001', 'B2', 'A102').
@@ -126,12 +135,20 @@ seccion('ISC103-0900','ISC-103', '0900', '0001', 'B2', 'A105').
 /*
 
     HECHO: Laboratorios, estan conformados por un código de laboratorio, código de materia, horario y nombre del laboratorio.
-
+    @author ivan.diaz@unah.hn
+    @version 0.1.1
+    @date 2026-07-18
+    @since 2026-07-17
 */
 laboratorio('0701', 'fs200', 'E1', 'Laboratorio de Física').
 
 /*
-    HECHOS: Materias aprobadas por estudiantes, estan conformados por un número de cuenta y código de materia.
+    HECHO: Materias aprobadas por estudiantes, estan conformados por un número de cuenta y código de materia.
+    @author ivan.diaz@unah.hn
+    @version 0.1.1
+    @date 2026-07-18
+    @since 2026-07-17
+    
 */
 
 materia_aprobada_por_estudiante('20221000759', 'ISC-101').
@@ -139,6 +156,11 @@ materia_aprobada_por_estudiante(_, _):- fail.
 
 /*
     REGLAS: Validar prerrequisitos de una materia para un estudiante.
+
+    @author ivan.diaz@unah.hn, danields.olivares@unah.hn, christian.vijil@unah.hn
+    @version 0.1.1
+    @date 2026-07-18
+    @since 2026-07-17
 */
 
 validar_prerrequisitos(_, 'Ninguno').
@@ -148,6 +170,10 @@ validar_prerrequisitos(Cuenta, ListaPrerrequisitos) :-
 
 /*
     REGLAS: Verificar si un estudiante puede matricular una materia.
+    @author ivan.diaz@unah.hn, danields.olivares@unah.hn, christian.vijil@unah.hn
+    @version 0.1.1
+    @date 2026-07-18
+    @since 2026-07-17
 */
 
 verificar_matricula(Cuenta, CodigoMateria) :-
@@ -162,6 +188,11 @@ verificar_matricula(Cuenta, CodigoMateria) :-
 
 /*
     HECHOS: Matriculas, estan conformados por un número de cuenta, código de sección y código de materia.
+
+    @author ivan.diaz@unah.hn
+    @date 2026-07-18
+    @since 2026-07-16
+    @version 0.1.2
 */
 
 matriculado('20221000759', 'ISC102-0700', 'ISC-102').
@@ -175,6 +206,8 @@ matriculado('20221000761', 'ISC103-0900', 'ISC-103').
 
 /*
     REGLAS: Retorna una lista de estudiantes que reciben clases de un profesor específico, dado el nombre del profesor y el código de la sección.
+
+    @author ivan.diaz@unah.hn
 */
 
 alumnos_en_seccion_de_profesor(NombreProfesor, CodigoSeccion, NombreEstudiante) :-
@@ -185,17 +218,34 @@ alumnos_en_seccion_de_profesor(NombreProfesor, CodigoSeccion, NombreEstudiante) 
 
 /*
     REGLAS: Consultas para obtener información de estudiantes, profesores y materias.
+
+    @author ivan.diaz@unah.hn
+    @version 0.1.3
+    @date 2026-07-18
+    @since 2026-07-16
 */
 lista_alumnos_seccion(NombreProfesor, CodigoSeccion, ListaAlumnos) :-
     findall(NombreEstudiante, alumnos_en_seccion_de_profesor(NombreProfesor, CodigoSeccion, NombreEstudiante), ListaAlumnos).
 
-%REGLAS: Consultas para 
+/*
+    REGLA: Consultas para verificar si un estudiante tiene esa clase matriculada, dado el nombre del estudiante y el nombre de la materia.
+    @author ivan.diaz@unah.hn
+    @version 0.1.3
+    @date 2026-07-18
+    @since 2026-07-16
+*/
 clases_de_alumno(NombreEstudiante, NombreMateria) :-
     estudiante(CuentaEstudiante, NombreEstudiante, _, _, _),    
     matriculado(CuentaEstudiante, _, CodigoMateria),
     materia(CodigoMateria, NombreMateria, _, _).
 
-%REGLAS: Consultas para obtener la lista de materias matriculadas por un estudiante.
+/*
+    REGLAS: Consultas para obtener la lista de materias matriculadas por un estudiante.
+    @author ivan.diaz@unah.hn
+    @version 0.1.3
+    @date 2026-07-18
+    @since 2026-07-16
+*/
 lista_clases_matriculadas(NombreEstudiante, ListaMaterias) :-
     findall(NombreMateria, clases_de_alumno(NombreEstudiante, NombreMateria), ListaMaterias).
 
