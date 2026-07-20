@@ -1,7 +1,7 @@
 <?php
 /**
  * Author: jose.inestroza@unah.edu.hn
- * Modified by: Iván, Daniels, Christian
+ * Modified by: ivan.diaz@unah.hn, danields.olivares@unah.hn, christian.vijil@unah.hn
  * Version: 0.1.0
  */
 
@@ -11,7 +11,7 @@ $getAllProfesorData = fn() =>
     $fixJson(
         shell_exec(
             sprintf(
-                "swipl -s \"%s\" -g \"forall(profesor(Id,Name,Email),format('~w,~w,~w~n',[Id,Name,Email]))\" -t halt | python3 \"%s\"",
+                "swipl -s \"%s\" -g \"forall(profesor(Codigo,Name,Email),format('~w,~w,~w~n',[Id,Name,Email]))\" -t halt | python3 \"%s\"",
                 __DIR__ . "/../../data-model/db.pl",
                 __DIR__ . "/../python/process_profesors.py"
             )
