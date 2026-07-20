@@ -168,3 +168,34 @@ clases_de_alumno(NombreEstudiante, NombreMateria):-
 % Lista de clases matriculadas (Corregido el typo del nombre de la variable)
 lista_clases_matriculadas(NombreEstudiante, ListaMaterias):-
     findall(NombreMateria, clases_de_alumno(NombreEstudiante, NombreMateria), ListaMaterias).
+
+% RELACIÓN: MATERIAS APROBADAS
+
+% materia_aprobada_por_estudiante(CuentaEstudiante, CodigoMateria)
+materia_aprobada_por_estudiante('20221000759', 'ISC-101').
+
+% Predicado base para evitar errores cuando no existan más hechos.
+materia_aprobada_por_estudiante(_, _) :- fail.
+
+% Verifica si un estudiante cumple los prerrequisitos de una materia.
+
+validar_prerrequisitos(_, 'Ninguno').
+
+validar_prerrequisitos(CuentaEstudiante, ListaPrerrequisitos) :-
+    atomic_list_concat(Prerrequisitos, ',', ListaPrerrequisitos),
+    forall(
+        member(Materia, Prerrequisitos),
+        materia_aprobada_por_estudiante(CuentaEstudiante, Materia)
+    ).
+
+% Verifica si un estudiante puede matricular una materia.
+
+verificar_matricula(CuentaEstudiante, CodigoMateria) :-
+    materia(CodigoMateria, NombreMateria, _, Prerrequisitos),
+    (
+        validar_prerrequisitos(CuentaEstudiante, Prerrequisitos)
+        ->
+        format('El estudiante puede matricular ~w.~n', [NombreMateria])
+        ;
+        format('ERROR: El estudiante NO puede matricular ~w.~n', [NombreMateria])
+    ).
