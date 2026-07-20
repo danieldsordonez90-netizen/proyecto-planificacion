@@ -10,7 +10,7 @@ keys = [
     "estudiante_name",
     "estudiante_email",
     "estudiante_carrera",
-    "estudiante_indice",
+    "estudiante_indice"
 ]
 
 read_data = lambda: [line for line in str(sys.stdin.read()).strip().split("\n") if line.strip()]
@@ -30,5 +30,5 @@ print(
             read_data(),
             keys
         )
-    )
+    ).replace("'", '"')
 )

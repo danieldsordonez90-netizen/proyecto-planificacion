@@ -28,5 +28,5 @@ print(
             read_data(),
             keys
         )
-    )
+    ).replace("'", '"')
 )

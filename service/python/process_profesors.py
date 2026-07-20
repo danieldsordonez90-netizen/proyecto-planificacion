@@ -8,7 +8,7 @@ import sys
 keys = [
     "profesor_id",
     "profesor_name",
-    "profesor_email",
+    "profesor_email"
 ]
 
 read_data = lambda: [line for line in str(sys.stdin.read()).strip().split("\n") if line.strip()]
@@ -28,5 +28,5 @@ print(
             read_data(),
             keys
         )
-    )
+    ).replace("'", '"')
 )
