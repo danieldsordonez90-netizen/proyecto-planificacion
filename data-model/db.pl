@@ -1,10 +1,8 @@
 % Author: Iván, Daniels, Christian 
 % Version: 0.1.0
 
-% =========================================================================
-% ENTIDAD: ESTUDIANTES (Corregido el acento de Marta)
+% ENTIDAD: ESTUDIANTES
 % estudiante(Cuenta, NombreCompleto, Correo, Carrera, IndiceAcademico)
-% =========================================================================
 
 estudiante('20221000759', 'Ivan Alessandro Díaz Villanueva', 'ivan.diaz@unah.hn', 'ingeniería en sistemas', 90).
 estudiante('20221000760', 'Carlos Miguel Hernandez', 'carlos.martinez@unah.hn', 'ingeniería en sistemas', 79).
@@ -36,10 +34,9 @@ estudiante('20241000517', 'Javier Ignacio Matamoros', 'jmatamoros@unah.hn', 'ing
 estudiante('20221000518', 'Beatriz Elena Valladares', 'bvalladares@unah.hn', 'ingeniería en sistemas', 80).
 estudiante('20231000519', 'Héctor Manuel Turcios', 'hturcios@unah.hn', 'ingeniería en sistemas', 66).
 
-% =========================================================================
 % ENTIDAD: PROFESORES
 % profesor(CodigoProfesor, NombreCompleto, Correo)
-% =========================================================================
+
 profesor('0001', 'Miguel Angel Rodas', 'miguel.rodas@unah.hn').
 profesor('0002', 'Juan Andres Ceballos', 'juan.ceballos@unah.hn').
 profesor('0003', 'Mario José Gutierrez', 'mario.gutierrez@unah.hn').
@@ -55,10 +52,9 @@ profesor('0012', 'Daniela Irene Argueta', 'daniela.argueta@unah.hn').
 profesor('0013', 'Marco Antonio Bonilla', 'marco.bonilla@unah.hn').
 profesor('0014', 'Sara Victoria Lanza', 'sara.lanza@unah.hn').
 
-% =========================================================================
 % ENTIDAD: MATERIAS
 % materia(CodigoMateria, NombreMateria, UnidadesValorativas, Prerrequisitos)
-% =========================================================================
+
 materia('ISC-101', 'Introduccion a la Ingenieria en Sistemas Computacionales', 4, 'Ninguno').
 materia('EG-011', 'Espanol General', 4, 'Ninguno').
 materia('MM-110', 'Matematica I', 5, 'Ninguno').
@@ -110,25 +106,23 @@ materia('ISC-552', 'Seminario de Investigacion', 3, 'ISC-415,ISC-445,ISC-423').
 materia('ISC-544', 'Auditoria Informatica', 4, 'ISC-442,ISC-306').
 materia('ISC-546', 'Ejecucion de Proyectos de TI', 4, 'ISC-445').
 
-% =========================================================================
-% ENTIDAD: SECCIONES (Corregidos los códigos a Mayúsculas e inyectado el ID único)
+% ENTIDAD: SECCIONES 
 % seccion(IdSeccion, CodigoMateria, Hora, CodigoProfesor)
-% =========================================================================
+
 seccion('SEC-ISC101-0700', 'ISC-101', '0700', '0001').
 seccion('SEC-ISC102-0700', 'ISC-102', '0700', '0001').
 seccion('SEC-ISC102-0800', 'ISC-102', '0800', '0002').
 seccion('SEC-ISC103-0800', 'ISC-103', '0800', '0003').
 seccion('SEC-ISC103-0900', 'ISC-103', '0900', '0001').
 
-% =========================================================================
-% ENTIDAD: LABORATORIOS (Corregido a Mayúsculas)
-% =========================================================================
+% ENTIDAD: LABORATORIOS
+
 laboratorio('0701', 'FS-200', 'E1', 'Laboratorio de Física').
 
-% =========================================================================
-% RELACIÓN: MATRÍCULA (Ahora apunta al ID ÚNICO de la sección)
+
+% RELACIÓN: MATRÍCULA
 % matriculado(CuentaEstudiante, IdSeccion)
-% =========================================================================
+
 matriculado('20221000759', 'SEC-ISC101-0700').
 matriculado('20221000759', 'SEC-ISC103-0800').
 matriculado('20221000760', 'SEC-ISC102-0800').
@@ -138,9 +132,9 @@ matriculado('20221000761', 'SEC-ISC103-0800').
 matriculado('20221000762', 'SEC-ISC101-0700').
 matriculado('20221000761', 'SEC-ISC101-0700').
 
-% =========================================================================
-% REGLAS LÓGICAS (Refacturadas para evitar ambigüedad)
-% =========================================================================
+
+% REGLAS LÓGICAS
+
 
 % Verifica de qué profesor es alumno un estudiante según su sección real
 es_alumno_de(NombreProfesor, NombreEstudiante):-

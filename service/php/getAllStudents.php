@@ -18,6 +18,7 @@ $getAllStudentData = fn() =>
         ) ?? ""
     );
 
+echo $getAllStudentData();
 
 return [
     "getAllStudentData" => $getAllStudentData
