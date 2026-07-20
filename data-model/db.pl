@@ -10,7 +10,7 @@ estudiante('20221000759', 'Ivan Alessandro Díaz Villanueva', 'ivan.diaz@unah.hn
 estudiante('20221000760', 'Carlos Miguel Hernandez', 'carlos.martinez@unah.hn', 'ingeniería en sistemas', 79).
 estudiante('20221000761', 'Maria Fernanda Antunez', 'maria.macarena@unah.hn', 'ingeniería en sistemas', 69).
 estudiante('20221000762', 'Jose Antonio Salazar', 'jose@unah.hn', 'ingeniería en sistemas', 85).
-estudiante('20211000123', 'Marta Antonieta Carías','mcarias@unah.hn','ingenieía en sistemas', 78).
+estudiante('20211000123', 'Marta Antonieta Carías', 'mcarias@unah.hn', 'ingeniería en sistemas', 78).
 estudiante('20231000112', 'Sofía Alejandra Martínez', 'sofia.martinez@unah.hn', 'ingeniería en sistemas', 88).
 estudiante('20231000445', 'Diego Fernando Ramos', 'diego.ramos@unah.hn', 'ingeniería en sistemas', 74).
 estudiante('20221000890', 'Lucía Gabriela Varela', 'lucia.varela@unah.hn', 'ingeniería en sistemas', 92).
