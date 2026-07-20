@@ -59,7 +59,10 @@ profesor('0012', 'Daniela Irene Argueta', 'daniela.argueta@unah.hn').
 profesor('0013', 'Marco Antonio Bonilla', 'marco.bonilla@unah.hn').
 profesor('0014', 'Sara Victoria Lanza', 'sara.lanza@unah.hn').
 
-%HECHOS: Materias, estan conformados por un código de materia, su nombre, cantidad de créditos y sus prerrequisitos.
+/*
+    HECHO: Materia, estan conformados por un código de materia, su nombre, cantidad de créditos y sus prerrequisitos.
+*/
+
 materia('ISC-101', 'Introduccion a la Ingenieria en Sistemas Computacionales', 4, 'Ninguno').
 materia('EG-011', 'Espanol General', 4, 'Ninguno').
 materia('MM-110', 'Matematica I', 5, 'Ninguno').
@@ -111,34 +114,56 @@ materia('ISC-552', 'Seminario de Investigacion', 3, 'ISC-415,ISC-445,ISC-423').
 materia('ISC-544', 'Auditoria Informatica', 4, 'ISC-442,ISC-306').
 materia('ISC-546', 'Ejecucion de Proyectos de TI', 4, 'ISC-445').
 
-%HECHOS: Secciones, estan conformados por un código de sección, código de materia, horario y código de profesor.
-seccion('ISC101-0700','ISC-101', '0700', '0001').
-seccion('ISC102-0700','ISC-102', '0700', '0001').
-seccion('ISC102-0800','ISC-102', '0800', '0002').
-seccion('ISC103-0800','ISC-103', '0800', '0003').
-seccion('ISC103-0900','ISC-103', '0900', '0001').
+/*
+    HECHOS: Secciones, estan conformados por un código de sección, código de materia, horario y código de profesor.
+*/
+seccion('ISC101-0700','ISC-101', '0700', '0001', 'B2', 'A101').
+seccion('ISC102-0700','ISC-102', '0700', '0001', 'B2', 'A102').
+seccion('ISC102-0800','ISC-102', '0800', '0002', 'B2', 'A103').
+seccion('ISC103-0800','ISC-103', '0800', '0003', 'B2', 'A104').
+seccion('ISC103-0900','ISC-103', '0900', '0001', 'B2', 'A105').
 
-$%HECHOS: Laboratorios, estan conformados por un código de laboratorio, código de materia, horario y nombre del laboratorio.
+/*
+
+    HECHO: Laboratorios, estan conformados por un código de laboratorio, código de materia, horario y nombre del laboratorio.
+
+*/
 laboratorio('0701', 'fs200', 'E1', 'Laboratorio de Física').
 
-%%HECHOS: Materias aprobadas por estudiantes, estan conformados por un número de cuenta y código de materia.
+/*
+    HECHOS: Materias aprobadas por estudiantes, estan conformados por un número de cuenta y código de materia.
+*/
+
 materia_aprobada_por_estudiante('20221000759', 'ISC-101').
 materia_aprobada_por_estudiante(_, _):- fail.
 
-%REGLAS: Validar prerrequisitos de una materia para un estudiante.
+/*
+    REGLAS: Validar prerrequisitos de una materia para un estudiante.
+*/
+
 validar_prerrequisitos(_, 'Ninguno').
 validar_prerrequisitos(Cuenta, ListaPrerrequisitos) :-
     atomic_list_concat(Lista, ',', ListaPrerrequisitos),
     forall(member(Materia, Lista), materia_aprobada_por_estudiante(Cuenta, Materia)).
 
-%REGLAS: Verificar si un estudiante puede matricular una materia.
+/*
+    REGLAS: Verificar si un estudiante puede matricular una materia.
+*/
+
 verificar_matricula(Cuenta, CodigoMateria) :-
     materia(CodigoMateria, Nombre, _, Prerrequisitos),
-    (validar_prerrequisitos(Cuenta, Prerrequisitos) 
-        -> format('El estudiante puede matricular ~w.', [Nombre])
-        ;  format('ERROR: El estudiante NO puede matricular ~w.', [Nombre])).
+    validar_prerrequisitos(Cuenta, Prerrequisitos),
+    format('El estudiante puede matricular ~w.', [Nombre]).
 
-%HECHOS: Matriculas, estan conformados por un número de cuenta, código de sección y código de materia.
+verificar_matricula(Cuenta, CodigoMateria) :-
+    materia(CodigoMateria, Nombre, _, Prerrequisitos),
+    \+ validar_prerrequisitos(Cuenta, Prerrequisitos),
+    format('ERROR: El estudiante NO cumple requisitos para matricular ~w.', [Nombre]).
+
+/*
+    HECHOS: Matriculas, estan conformados por un número de cuenta, código de sección y código de materia.
+*/
+
 matriculado('20221000759', 'ISC102-0700', 'ISC-102').
 matriculado('20221000760', 'ISC103-0700', 'ISC-101').
 matriculado('20221000760', 'ISC103-0900', 'ISC-103').
@@ -148,23 +173,21 @@ matriculado('20221000762', 'ISC101-0900', 'ISC-101').
 matriculado('20221000761', 'ISC103-0900', 'ISC-103').
 
 
-%REGLAS: Consultas para obtener información de estudiantes, profesores y materias.
-es_alumno_de(NombreProfesor, NombreEstudiante) :-
+/*
+    REGLAS: Retorna una lista de estudiantes que reciben clases de un profesor específico, dado el nombre del profesor y el código de la sección.
+*/
+
+alumnos_en_seccion_de_profesor(NombreProfesor, CodigoSeccion, NombreEstudiante) :-
     profesor(CodigoProfesor, NombreProfesor, _),
-    seccion(_, _, _, CodigoProfesor),
-    matriculado(CuentaEstudiante, _, _),
+    seccion(CodigoSeccion, _, _, CodigoProfesor,_, _), 
+    matriculado(CuentaEstudiante, CodigoSeccion, _), 
     estudiante(CuentaEstudiante, NombreEstudiante, _, _, _).
 
-%REGLAS: Consultas para obtener información de estudiantes, profesores y materias.
-alumnos_en_seccion_de_profesor(NombreProfesor, IDSeccion, NombreEstudiante) :-
-    profesor(CodigoProfesor, NombreProfesor, _),
-    seccion(IDSeccion, _, _, CodigoProfesor), % Aquí se usa IDSeccion
-    matriculado(CuentaEstudiante, IDSeccion, _), % Aquí se usa IDSeccion para filtrar al alumno
-    estudiante(CuentaEstudiante, NombreEstudiante, _, _, _).
-
-%REGLAS: Consultas para obtener información de estudiantes, profesores y materias.
-lista_alumnos_seccion(NombreProfesor, IDSeccion, ListaAlumnos) :-
-    findall(NombreEstudiante, alumnos_en_seccion_de_profesor(NombreProfesor, IDSeccion, NombreEstudiante), ListaAlumnos).
+/*
+    REGLAS: Consultas para obtener información de estudiantes, profesores y materias.
+*/
+lista_alumnos_seccion(NombreProfesor, CodigoSeccion, ListaAlumnos) :-
+    findall(NombreEstudiante, alumnos_en_seccion_de_profesor(NombreProfesor, CodigoSeccion, NombreEstudiante), ListaAlumnos).
 
 %REGLAS: Consultas para 
 clases_de_alumno(NombreEstudiante, NombreMateria) :-
