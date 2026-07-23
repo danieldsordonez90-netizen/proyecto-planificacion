@@ -1,3 +1,4 @@
+
 /*
     HECHO:Estudiantes, estan conformados por un numero de cuenta, su nombre, correo, carrera que estudian y su índice global.
     @author ivan.diaz@unah.hn
@@ -68,56 +69,56 @@ profesor('0014', 'Sara Victoria Lanza', 'sara.lanza@unah.hn').
     @version 0.1.2
 */
 
-materia('ISC-101', 'Introduccion a la Ingenieria en Sistemas Computacionales', 4, 'Ninguno').
-materia('EG-011', 'Espanol General', 4, 'Ninguno').
-materia('MM-110', 'Matematica I', 5, 'Ninguno').
-materia('SC-101', 'Sociologia', 4, 'Ninguno').
-materia('IN-101', 'Optativa I: Campo de las Lenguas Extranjeras (Ingles I)', 4, 'Ninguno').
-materia('ISC-102', 'Programacion Estructurada', 4, 'ISC-101').
-materia('FF-101', 'Filosofia', 4, 'Ninguno').
-materia('MM-111', 'Geometria y Trigonometria', 5, 'Ninguno').
-materia('IN-102', 'Ingles II', 4, 'IN-101').
-materia('ISC-103', 'Programacion Orientada a Objetos', 5, 'ISC-102').
-materia('MM-201', 'Calculo I', 5, 'MM-110,MM-111').
-materia('MM-211', 'Vectores y Matrices', 3, 'MM-110,MM-111').
-materia('IN-103', 'Ingles III', 4, 'IN-102').
-materia('MM-420', 'Matematica DISC-reta', 4, 'MM-110').
-materia('MM-202', 'Calculo II', 5, 'MM-201,MM-211').
-materia('FS-100', 'Fisica I', 5, 'MM-212,MM-211').
-materia('HH-101', 'Historia de Honduras', 4, 'Ninguno').
-materia('ISC-204', 'Paradigmas de Programacion', 4, 'ISC-103').
-materia('MM-401', 'Estadistica I', 3, 'MM-202').
-materia('FS-200', 'Fisica II', 5, 'FS-100,MM-202').
-materia('ISC-211', 'Estructuras de Datos', 4, 'MM-420,MM-211,ISC-103').
-materia('AGE-102', 'Administracion', 4, 'MM-401').
-materia('IE-326', 'Instalaciones Electricas para Centros de Datos', 4, 'FS-200').
-materia('ISC-321', 'Fundamentos de Base de Datos', 5, 'MM-420').
-materia('ISC-351', 'Contabilidad Financiera', 4, 'AGE-102').
-materia('ISC-331', 'Redes de Datos I', 4, 'IE-326').
-materia('ISC-333', 'Sistemas Operativos I', 4, 'ISC-211').
-materia('ISC-312', 'Teoria de la Computacion', 4, 'ISC-211,ISC-204').
-materia('ISC-341', 'Sistemas de Informacion', 4, 'ISC-351').
-materia('ISC-332', 'Redes de Datos II', 4, 'ISC-331').
-materia('ISC-334', 'Sistemas Operativos II', 4, 'ISC-333').
-materia('ISC-305', 'Programacion Web', 4, 'ISC-321').
-materia('ISC-313', 'Compiladores', 4, 'ISC-312').
-materia('ISC-306', 'Analisis de Requerimientos', 4, 'ISC-341,ISC-321,ISC-334').
-materia('ISC-336', 'Diseno Digital', 4, 'ISC-334').
-materia('ISC-407', 'Programacion Movil', 5, 'ISC-305').
-materia('ISC-414', 'Inteligencia Artificial', 4, 'ISC-313,MM-401').
-materia('ISC-435', 'Administracion de Servidores', 4, 'ISC-334,ISC-332').
-materia('ISC-437', 'Arquitectura de Computadoras', 4, 'ISC-336').
-materia('ISC-408', 'Ingenieria del Software', 4, 'ISC-306,ISC-407').
-materia('ISC-422', 'Administracion de Base de Datos', 4, 'ISC-321').
-materia('ISC-442', 'Seguridad Informatica', 4, 'ISC-435').
-materia('ISC-443', 'Industria de TI', 4, 'ISC-306').
-materia('ISC-409', 'Calidad de Software', 4, 'ISC-408').
-materia('ISC-423', 'Ciencia de Datos', 4, 'ISC-422').
-materia('ISC-415', 'Tecnologias Emergentes', 4, 'ISC-305,ISC-437,ISC-332').
-materia('ISC-445', 'Proyectos de TI', 4, 'ISC-443,ISC-442').
-materia('ISC-552', 'Seminario de Investigacion', 3, 'ISC-415,ISC-445,ISC-423').
-materia('ISC-544', 'Auditoria Informatica', 4, 'ISC-442,ISC-306').
-materia('ISC-546', 'Ejecucion de Proyectos de TI', 4, 'ISC-445').
+materia('ISC-101', 'Introduccion a la Ingenieria en Sistemas Computacionales', 4, ['Ninguno']).
+materia('EG-011', 'Espanol General', 4, ['Ninguno']).
+materia('MM-110', 'Matematica I', 5, ['Ninguno']).
+materia('SC-101', 'Sociologia', 4, ['Ninguno']).
+materia('IN-101', 'Optativa I: Campo de las Lenguas Extranjeras (Ingles I)', 4, ['Ninguno']).
+materia('ISC-102', 'Programacion Estructurada', 4, ['ISC-101']).
+materia('FF-101', 'Filosofia', 4, ['Ninguno']).
+materia('MM-111', 'Geometria y Trigonometria', 5, ['Ninguno']).
+materia('IN-102', 'Ingles II', 4, ['IN-101']).
+materia('ISC-103', 'Programacion Orientada a Objetos', 5, ['ISC-102']).
+materia('MM-201', 'Calculo I', 5, ['MM-110,MM-111']).
+materia('MM-211', 'Vectores y Matrices', 3, ['MM-110,MM-111']).
+materia('IN-103', 'Ingles III', 4, ['IN-102']).
+materia('MM-420', 'Matematica DISC-reta', 4, ['MM-110']).
+materia('MM-202', 'Calculo II', 5, ['MM-201,MM-211']).
+materia('FS-100', 'Fisica I', 5, ['MM-212,MM-211']).
+materia('HH-101', 'Historia de Honduras', 4, ['Ninguno']).
+materia('ISC-204', 'Paradigmas de Programacion', 4, ['ISC-103']).
+materia('MM-401', 'Estadistica I', 3, ['MM-202']).
+materia('FS-200', 'Fisica II', 5, ['FS-100,MM-202']).
+materia('ISC-211', 'Estructuras de Datos', 4, ['MM-420,MM-211,ISC-103']).
+materia('AGE-102', 'Administracion', 4, ['MM-401']).
+materia('IE-326', 'Instalaciones Electricas para Centros de Datos', 4, ['FS-200']).
+materia('ISC-321', 'Fundamentos de Base de Datos', 5, ['MM-420']).
+materia('ISC-351', 'Contabilidad Financiera', 4, ['AGE-102']).
+materia('ISC-331', 'Redes de Datos I', 4, ['IE-326']).
+materia('ISC-333', 'Sistemas Operativos I', 4, ['ISC-211']).
+materia('ISC-312', 'Teoria de la Computacion', 4, ['ISC-211,ISC-204']).
+materia('ISC-341', 'Sistemas de Informacion', 4, ['ISC-351']).
+materia('ISC-332', 'Redes de Datos II', 4, ['ISC-331']).
+materia('ISC-334', 'Sistemas Operativos II', 4, ['ISC-333']).
+materia('ISC-305', 'Programacion Web', 4, ['ISC-321']).
+materia('ISC-313', 'Compiladores', 4, ['ISC-312']).
+materia('ISC-306', 'Analisis de Requerimientos', 4, ['ISC-341,ISC-321,ISC-334']).
+materia('ISC-336', 'Diseno Digital', 4, ['ISC-334']).
+materia('ISC-407', 'Programacion Movil', 5, ['ISC-305']).
+materia('ISC-414', 'Inteligencia Artificial', 4, ['ISC-313,MM-401']).
+materia('ISC-435', 'Administracion de Servidores', 4, ['ISC-334,ISC-332']).
+materia('ISC-437', 'Arquitectura de Computadoras', 4, ['ISC-336']).
+materia('ISC-408', 'Ingenieria del Software', 4, ['ISC-306,ISC-407']).
+materia('ISC-422', 'Administracion de Base de Datos', 4, ['ISC-321']).
+materia('ISC-442', 'Seguridad Informatica', 4, ['ISC-435']).
+materia('ISC-443', 'Industria de TI', 4, ['ISC-306']).
+materia('ISC-409', 'Calidad de Software', 4, ['ISC-408']).
+materia('ISC-423', 'Ciencia de Datos', 4, ['ISC-422']).
+materia('ISC-415', 'Tecnologias Emergentes', 4, ['ISC-305,ISC-437,ISC-332']).
+materia('ISC-445', 'Proyectos de TI', 4, ['ISC-443,ISC-442']).
+materia('ISC-552', 'Seminario de Investigacion', 3, ['ISC-415,ISC-445,ISC-423']).
+materia('ISC-544', 'Auditoria Informatica', 4, ['ISC-442,ISC-306']).
+materia('ISC-546', 'Ejecucion de Proyectos de TI', 4, ['ISC-445']).
 
 /*
     HECHO: Secciones, estan conformados por un código de sección, código de materia, horario y código de profesor.
@@ -126,11 +127,20 @@ materia('ISC-546', 'Ejecucion de Proyectos de TI', 4, 'ISC-445').
     @date 2026-07-18
     @since 2026-07-16
 */
+
+aula('B2', 'A101', 35).
+aula('B2', 'A102', 35).
+aula('B2', 'A103', 35).
+aula('B2', 'A104', 35).
+aula('B2', 'A105', 35).
+
+
 seccion('ISC101-0700','ISC-101', '0700', '0001', 'B2', 'A101').
 seccion('ISC102-0700','ISC-102', '0700', '0001', 'B2', 'A102').
 seccion('ISC102-0800','ISC-102', '0800', '0002', 'B2', 'A103').
 seccion('ISC103-0800','ISC-103', '0800', '0003', 'B2', 'A104').
 seccion('ISC103-0900','ISC-103', '0900', '0001', 'B2', 'A105').
+
 
 /*
 
@@ -150,102 +160,12 @@ laboratorio('0701', 'fs200', 'E1', 'Laboratorio de Física').
     @since 2026-07-17
     
 */
-
-materia_aprobada_por_estudiante('20221000759', 'ISC-101').
-materia_aprobada_por_estudiante(_, _):- fail.
-
-/*
-    REGLAS: Validar prerrequisitos de una materia para un estudiante.
-
-    @author ivan.diaz@unah.hn, danields.olivares@unah.hn, christian.vijil@unah.hn
-    @version 0.1.1
-    @date 2026-07-18
-    @since 2026-07-17
-*/
-
-validar_prerrequisitos(_, 'Ninguno').
-validar_prerrequisitos(Cuenta, ListaPrerrequisitos) :-
-    atomic_list_concat(Lista, ',', ListaPrerrequisitos),
-    forall(member(Materia, Lista), materia_aprobada_por_estudiante(Cuenta, Materia)).
-
-/*
-    REGLAS: Verificar si un estudiante puede matricular una materia.
-    @author ivan.diaz@unah.hn, danields.olivares@unah.hn, christian.vijil@unah.hn
-    @version 0.1.1
-    @date 2026-07-18
-    @since 2026-07-17
-*/
-
-verificar_matricula(Cuenta, CodigoMateria) :-
-    materia(CodigoMateria, Nombre, _, Prerrequisitos),
-    validar_prerrequisitos(Cuenta, Prerrequisitos),
-    format('El estudiante puede matricular ~w.', [Nombre]).
-
-verificar_matricula(Cuenta, CodigoMateria) :-
-    materia(CodigoMateria, Nombre, _, Prerrequisitos),
-    \+ validar_prerrequisitos(Cuenta, Prerrequisitos),
-    format('ERROR: El estudiante NO cumple requisitos para matricular ~w.', [Nombre]).
-
-/*
-    HECHOS: Matriculas, estan conformados por un número de cuenta, código de sección y código de materia.
-
-    @author ivan.diaz@unah.hn
-    @date 2026-07-18
-    @since 2026-07-16
-    @version 0.1.2
-*/
-
-matriculado('20221000759', 'ISC102-0700', 'ISC-102').
-matriculado('20221000760', 'ISC103-0700', 'ISC-101').
-matriculado('20221000760', 'ISC103-0900', 'ISC-103').
-matriculado('20221000760', 'ISC102-0800', 'ISC-102').
-matriculado('20221000761', 'ISC103-0800', 'ISC-103').
-matriculado('20221000762', 'ISC101-0900', 'ISC-101').
-matriculado('20221000761', 'ISC103-0900', 'ISC-103').
+clase_cursada('20221000759', 'ISC-101', 75,'1PAC', '2025').
+clase_cursada('20221000759', 'ISC-102', 28, '2PAC', '2025').
 
 
-/*
-    REGLAS: Retorna una lista de estudiantes que reciben clases de un profesor específico, dado el nombre del profesor y el código de la sección.
+%-----------------------------------
 
-    @author ivan.diaz@unah.hn
-*/
 
-alumnos_en_seccion_de_profesor(NombreProfesor, CodigoSeccion, NombreEstudiante) :-
-    profesor(CodigoProfesor, NombreProfesor, _),
-    seccion(CodigoSeccion, _, _, CodigoProfesor,_, _), 
-    matriculado(CuentaEstudiante, CodigoSeccion, _), 
-    estudiante(CuentaEstudiante, NombreEstudiante, _, _, _).
 
-/*
-    REGLAS: Consultas para obtener información de estudiantes, profesores y materias.
-
-    @author ivan.diaz@unah.hn
-    @version 0.1.3
-    @date 2026-07-18
-    @since 2026-07-16
-*/
-lista_alumnos_seccion(NombreProfesor, CodigoSeccion, ListaAlumnos) :-
-    findall(NombreEstudiante, alumnos_en_seccion_de_profesor(NombreProfesor, CodigoSeccion, NombreEstudiante), ListaAlumnos).
-
-/*
-    REGLA: Consultas para verificar si un estudiante tiene esa clase matriculada, dado el nombre del estudiante y el nombre de la materia.
-    @author ivan.diaz@unah.hn
-    @version 0.1.3
-    @date 2026-07-18
-    @since 2026-07-16
-*/
-clases_de_alumno(NombreEstudiante, NombreMateria) :-
-    estudiante(CuentaEstudiante, NombreEstudiante, _, _, _),    
-    matriculado(CuentaEstudiante, _, CodigoMateria),
-    materia(CodigoMateria, NombreMateria, _, _).
-
-/*
-    REGLAS: Consultas para obtener la lista de materias matriculadas por un estudiante.
-    @author ivan.diaz@unah.hn
-    @version 0.1.3
-    @date 2026-07-18
-    @since 2026-07-16
-*/
-lista_clases_matriculadas(NombreEstudiante, ListaMaterias) :-
-    findall(NombreMateria, clases_de_alumno(NombreEstudiante, NombreMateria), ListaMaterias).
 
