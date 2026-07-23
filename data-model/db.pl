@@ -127,21 +127,144 @@ materia('ISC-546', 'Ejecucion de Proyectos de TI', 4, ['ISC-445']).
     @date 2026-07-18
     @since 2026-07-16
 */
-
 aula('B2', 'A101', 35).
 aula('B2', 'A102', 35).
 aula('B2', 'A103', 35).
 aula('B2', 'A104', 35).
 aula('B2', 'A105', 35).
+aula('B2', 'A106', 40).
+aula('B2', 'A107', 40).
+aula('B2', 'A108', 40).
+aula('B2', 'A109', 30).
+aula('B2', 'A110', 30).
+aula('E1', 'A101', 35).
+aula('E1', 'A102', 35).
+aula('E1', 'A103', 40).
+aula('E1', 'A104', 40).
+aula('E1', 'A105', 30).
+aula('F1', 'A101', 40).
+aula('F1', 'A102', 40).
+aula('F1', 'A103', 45).
+aula('F1', 'A104', 45).
+aula('F1', 'A105', 50).
 
 
-seccion('ISC101-0700','ISC-101', '0700', '0001', 'B2', 'A101').
-seccion('ISC102-0700','ISC-102', '0700', '0001', 'B2', 'A102').
-seccion('ISC102-0800','ISC-102', '0800', '0002', 'B2', 'A103').
-seccion('ISC103-0800','ISC-103', '0800', '0003', 'B2', 'A104').
-seccion('ISC103-0900','ISC-103', '0900', '0001', 'B2', 'A105').
 
 
+% --- ISC-101: Introduccion a la Ingenieria en Sistemas ---
+seccion('ISC101-0700', 'ISC-101', '0700', 'P101', 'A101', 'B2').
+seccion('ISC101-0800', 'ISC-101', '0800', 'P102', 'A102', 'B2').
+seccion('ISC101-1400', 'ISC-101', '1400', 'P108', 'A103', 'B2').
+
+% --- ISC-102: Algoritmos y Programacion I ---
+seccion('ISC102-0800', 'ISC-102', '0800', 'P103', 'A103', 'B2').
+seccion('ISC102-0900', 'ISC-102', '0900', 'P101', 'A101', 'B2').
+seccion('ISC102-1500', 'ISC-102', '1500', 'P109', 'A104', 'B2').
+
+% --- ISC-201: Estructura de Datos ---
+seccion('ISC201-0900', 'ISC-201', '0900', 'P104', 'A104', 'B2').
+seccion('ISC201-1000', 'ISC-201', '1000', 'P102', 'A102', 'B2').
+seccion('ISC201-1600', 'ISC-201', '1600', 'P110', 'A105', 'B2').
+
+% --- ISC-202: Programacion Orientada a Objetos ---
+seccion('ISC202-1000', 'ISC-202', '1000', 'P105', 'A105', 'B2').
+seccion('ISC202-1100', 'ISC-202', '1100', 'P103', 'A103', 'B2').
+seccion('ISC202-1700', 'ISC-202', '1700', 'P102', 'A106', 'B2').
+
+% --- ISC-203: Paradigmas de Programacion ---
+seccion('ISC203-0700', 'ISC-203', '0700', 'P103', 'A103', 'B2').
+seccion('ISC203-1200', 'ISC-203', '1200', 'P101', 'A101', 'B2').
+seccion('ISC203-1800', 'ISC-203', '1800', 'P104', 'A104', 'B2').
+
+% --- ISC-204: Circuitos Electricos para Sistemas ---
+seccion('ISC204-0800', 'ISC-204', '0800', 'P105', 'A105', 'B2').
+seccion('ISC204-1300', 'ISC-204', '1300', 'P101', 'A101', 'B2').
+seccion('ISC204-1700', 'ISC-204', '1700', 'P103', 'A102', 'B2').
+
+% --- ISC-301: Bases de Datos I ---
+seccion('ISC301-0700', 'ISC-301', '0700', 'P106', 'A106', 'B2').
+seccion('ISC301-1100', 'ISC-301', '1100', 'P106', 'A106', 'B2').
+seccion('ISC301-1500', 'ISC-301', '1500', 'P106', 'A101', 'B2').
+
+% --- ISC-302: Sistemas Operativos ---
+seccion('ISC302-0800', 'ISC-302', '0800', 'P107', 'A107', 'B2').
+seccion('ISC302-1300', 'ISC-302', '1300', 'P107', 'A107', 'B2').
+seccion('ISC302-1600', 'ISC-302', '1600', 'P108', 'A102', 'B2').
+
+% --- ISC-303: Redes de Computadoras I ---
+seccion('ISC303-0900', 'ISC-303', '0900', 'P108', 'A108', 'B2').
+seccion('ISC303-1400', 'ISC-303', '1400', 'P105', 'A102', 'B2').
+seccion('ISC303-1700', 'ISC-303', '1700', 'P108', 'A103', 'B2').
+
+% --- ISC-304: Analisis y Diseno de Sistemas ---
+seccion('ISC304-1000', 'ISC-304', '1000', 'P106', 'A106', 'B2').
+seccion('ISC304-1300', 'ISC-304', '1300', 'P108', 'A103', 'B2').
+seccion('ISC304-1800', 'ISC-304', '1800', 'P105', 'A105', 'B2').
+
+% --- ISC-305: Organizacion y Arquitectura de Computadoras ---
+seccion('ISC305-0900', 'ISC-305', '0900', 'P102', 'A102', 'B2').
+seccion('ISC305-1400', 'ISC-305', '1400', 'P104', 'A104', 'B2').
+seccion('ISC305-1900', 'ISC-305', '1900', 'P108', 'A108', 'B2').
+
+% --- ISC-401: Ingenieria de Software ---
+seccion('ISC401-1000', 'ISC-401', '1000', 'P109', 'A109', 'B2').
+seccion('ISC401-1400', 'ISC-401', '1400', 'P106', 'A108', 'B2').
+seccion('ISC401-1800', 'ISC-401', '1800', 'P109', 'A101', 'B2').
+
+% --- ISC-402: Bases de Datos II ---
+seccion('ISC402-0900', 'ISC-402', '0900', 'P110', 'A110', 'B2').
+seccion('ISC402-1200', 'ISC-402', '1200', 'P110', 'A110', 'B2').
+seccion('ISC402-1600', 'ISC-402', '1600', 'P106', 'A109', 'B2').
+
+% --- ISC-403: Redes de Computadoras II ---
+seccion('ISC403-1100', 'ISC-403', '1100', 'P108', 'A107', 'B2').
+seccion('ISC403-1300', 'ISC-403', '1300', 'P109', 'A109', 'B2').
+seccion('ISC403-1700', 'ISC-403', '1700', 'P110', 'A110', 'B2').
+
+% --- ISC-404: Sistemas de Informacion ---
+seccion('ISC404-0800', 'ISC-404', '0800', 'P104', 'A104', 'B2').
+seccion('ISC404-1200', 'ISC-404', '1200', 'P102', 'A102', 'B2').
+seccion('ISC404-1900', 'ISC-404', '1900', 'P101', 'A101', 'B2').
+
+% --- ISC-405: Programacion de Redes y Sockets ---
+seccion('ISC405-1000', 'ISC-405', '1000', 'P101', 'A101', 'B2').
+seccion('ISC405-1500', 'ISC-405', '1500', 'P103', 'A103', 'B2').
+seccion('ISC405-1800', 'ISC-405', '1800', 'P108', 'A108', 'B2').
+
+% --- ISC-406: Calidad de Software ---
+seccion('ISC406-0700', 'ISC-406', '0700', 'P109', 'A109', 'B2').
+seccion('ISC406-1100', 'ISC-406', '1100', 'P102', 'A102', 'B2').
+seccion('ISC406-1600', 'ISC-406', '1600', 'P107', 'A107', 'B2').
+
+% --- ISC-501: Inteligencia Artificial ---
+seccion('ISC501-0700', 'ISC-501', '0700', 'P110', 'A110', 'B2').
+seccion('ISC501-1200', 'ISC-501', '1200', 'P105', 'A105', 'B2').
+seccion('ISC501-1600', 'ISC-501', '1600', 'P105', 'A104', 'B2').
+
+% --- ISC-502: Sistemas Distribuidos ---
+seccion('ISC502-0800', 'ISC-502', '0800', 'P109', 'A109', 'B2').
+seccion('ISC502-1300', 'ISC-502', '1300', 'P110', 'A110', 'B2').
+seccion('ISC502-1800', 'ISC-502', '1800', 'P107', 'A102', 'B2').
+
+% --- ISC-503: Seguridad Informatica ---
+seccion('ISC503-0900', 'ISC-503', '0900', 'P107', 'A107', 'B2').
+seccion('ISC503-1500', 'ISC-503', '1500', 'P110', 'A110', 'B2').
+seccion('ISC503-1700', 'ISC-503', '1700', 'P109', 'A109', 'B2').
+
+% --- ISC-504: Gestion de Proyectos de TI ---
+seccion('ISC504-1100', 'ISC-504', '1100', 'P104', 'A104', 'B2').
+seccion('ISC504-1500', 'ISC-504', '1500', 'P102', 'A102', 'B2').
+seccion('ISC504-1900', 'ISC-504', '1900', 'P103', 'A103', 'B2').
+
+% --- ISC-505: Auditoria de Sistemas ---
+seccion('ISC505-1000', 'ISC-505', '1000', 'P107', 'A107', 'B2').
+seccion('ISC505-1400', 'ISC-505', '1400', 'P110', 'A110', 'B2').
+seccion('ISC505-2000', 'ISC-505', '2000', 'P106', 'A106', 'B2').
+
+% --- ISC-506: Seminario de Investigacion ---
+seccion('ISC506-0700', 'ISC-506', '0700', 'P105', 'A105', 'B2').
+seccion('ISC506-1300', 'ISC-506', '1300', 'P106', 'A106', 'B2').
+seccion('ISC506-1900', 'ISC-506', '1900', 'P109', 'A109', 'B2').
 /*
 
     HECHO: Laboratorios, estan conformados por un código de laboratorio, código de materia, horario y nombre del laboratorio.
@@ -164,8 +287,12 @@ clase_cursada('20221000759', 'ISC-101', 75,'1PAC', '2025').
 clase_cursada('20221000759', 'ISC-102', 28, '2PAC', '2025').
 
 
+seccion_impartida('ISC101-0700', 'ISC-101', '0700', '0001', '1PAC', '2025').
+seccion_impartida('ISC102-0900', 'ISC-102', '0900', '0001', '2PAC', '2025').
+
 %-----------------------------------
 
-
-
+/* ==========================================================================
+   GENERADOR AUTOMÁTICO DE CARGA ACADÉMICA Y PLAN DE ESTUDIOS
+   ========================================================================== */
 
