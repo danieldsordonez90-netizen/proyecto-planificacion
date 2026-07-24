@@ -1,8 +1,8 @@
 :- consult('db.pl').
 
-requisitos(CodigoMateria, Prerrequisitos) :-
-    materia(CodigoMateria, _, _, Prerrequisitos).
-    
+requisitos(CodigoMateria, Requisito) :-
+    materia(CodigoMateria, _, _, ListaRequisitos),
+    member(Requisito, ListaRequisitos).
 todas_las_materias :-
     findall(
         (Cod, Nom, Uv, Requisitos),
