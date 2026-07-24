@@ -11,7 +11,6 @@ $getStudentsByTeacherData = function($codigoProfesor = '') use ($fixJson) {
         $codigoProfesor = $_GET['profesor'];
     }
 
-    // Aseguramos la ejecución limpia del goal en SWI-Prolog
     $comando = sprintf(
         "swipl -q -s \"%s\" -g \"estudiantes_de_profesor('%s', L), (member(estudiante(Cue, Nom), L), format('~w,~w~n', [Cue, Nom]), fail ; true)\" -t halt | python3 \"%s\"",
         __DIR__ . "/../../data-model/rules.pl",

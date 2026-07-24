@@ -4,7 +4,6 @@
 
 import sys
 
-# Solo nos interesa extraer el índice para procesarlo en el Frontend
 keys = [
     "estudiante_indice"
 ]

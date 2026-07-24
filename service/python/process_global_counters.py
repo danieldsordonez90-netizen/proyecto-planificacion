@@ -4,7 +4,6 @@
 
 import sys
 
-# Propiedades específicas para los contadores agregados
 keys = [
     "total_estudiantes",
     "total_profesores",

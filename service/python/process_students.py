@@ -21,10 +21,8 @@ process_data = lambda array, keys: [
     for values in [process_item(item)]
 ]
 
-# Convertimos la estructura a JSON manual sin comillas simples de Python
 data = process_data(read_data(), keys)
 
-# Formateo a JSON manual string
 json_items = [
     '{"estudiante_cuenta":"' + item.get("estudiante_cuenta", "") + '","estudiante_name":"' + item.get("estudiante_name", "") + '"}'
     for item in data
