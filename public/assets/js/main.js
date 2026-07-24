@@ -175,12 +175,10 @@ async function mostrarModalRequisitos(codigoMateria, nombreMateria) {
         modalExistente.remove();
     }
 
-    let contenidoHTML = p("Cargando requisitos...");
-
     const modalRequisitos = dialog(
         "modal-requisitos", 
         "Requisitos de " + nombreMateria, 
-        contenidoHTML
+        p("Cargando requisitos...")
     );
 
     document.body.appendChild(modalRequisitos);
@@ -190,21 +188,21 @@ async function mostrarModalRequisitos(codigoMateria, nombreMateria) {
         const requisitos = await fetchJSON('./api/requisitos.php?codigo=' + codigoMateria);
 
         if (!requisitos || requisitos.length === 0) {
-            modalRequisitos.querySelector("div").innerHTML = h(3, "Requisitos de " + nombreMateria) + p("Esta materia no tiene prerrequisitos registrados.");
+            modalRequisitos.querySelector("div").innerHTML = p("Esta materia no tiene prerrequisitos registrados.");
             return;
         }
 
         let listaHTML = "<ul>";
         for (let i = 0; i < requisitos.length; i++) {
-            listaHTML += "<li>Prerrequisito: <strong>" + requisitos[i].requisitos + "</strong></li>";
+            listaHTML += "<li>Requisito: <strong>" + requisitos[i].requisitos + "</strong></li>";
         }
         listaHTML += "</ul>";
 
-        modalRequisitos.querySelector("div").innerHTML = h(3, "Requisitos de " + nombreMateria) + listaHTML;
+        modalRequisitos.querySelector("div").innerHTML = listaHTML;
 
     } catch (error) {
         console.error("Error al consultar la API de requisitos:", error);
-        modalRequisitos.querySelector("div").innerHTML = h(3, "Requisitos de " + nombreMateria) + p("Ocurrió un error al obtener los requisitos.");
+        modalRequisitos.querySelector("div").innerHTML = p("Ocurrió un error al obtener los requisitos.");
     }
 }
 
