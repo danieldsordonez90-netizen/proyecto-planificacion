@@ -32,12 +32,9 @@ elementoColIzq.style.gap = "20px";
 
 async function cargarProfesores() {
     const contenedorResultados = document.getElementById("caja-resultados");
-    try {
+   
         const profesores = await fetchJSON('./api/profesores.php');        
-        if (!profesores || profesores.length === 0) {
-            contenedorResultados.innerHTML = h(2, "Resultados") + p("No se encontraron profesores registrados.");
-            return;
-        }
+
 
         contenedorResultados.innerHTML = h(2, "Profesores Registrados");
 
@@ -72,14 +69,11 @@ async function cargarProfesores() {
 
         contenedorResultados.appendChild(ul);
 
-    } catch (error) {
-        console.error("Error al consultar la API de profesores:", error);
-        contenedorResultados.innerHTML = h(2, "Resultados") + p("Ocurrió un error al obtener los datos de Prolog.");
-    }
+   
 }
 
 async function cargarAlumnosPorProfesor(codigoProfesor, nombreProfesor) {
-    try {
+    
         const estudiantes = await fetchJSON('./api/estudiantes.php?profesor=' + codigoProfesor);
 
         let contenidoHTML = "";
@@ -110,20 +104,14 @@ async function cargarAlumnosPorProfesor(codigoProfesor, nombreProfesor) {
         document.body.appendChild(modalAlumnos);
         modalAlumnos.showModal();
 
-    } catch (error) {
-        console.error("Error al consultar alumnos del profesor:", error);
-        alert("Ocurrió un error al cargar la lista de alumnos.");
-    }
+   
 }
 
 async function cargarSecciones() {
     const contenedorResultados = document.getElementById("caja-resultados");
-    try {
+    
         const secciones = await fetchJSON('./api/secciones.php');
-        if (!secciones || secciones.length === 0) {
-            contenedorResultados.innerHTML = h(2, "Resultados") + p("No se encontraron secciones registradas.");
-            return;
-        }
+       
 
         contenedorResultados.innerHTML = h(2, "Secciones Registradas");
 
@@ -143,16 +131,11 @@ async function cargarSecciones() {
         }
 
         contenedorResultados.appendChild(ul);
-
-    } catch (error) {
-        console.error("Error al consultar la API de secciones:", error);
-        contenedorResultados.innerHTML = h(2, "Resultados") + p("Ocurrió un error al obtener las secciones de Prolog.");
-    }
 }
 
 async function cargarRequisitos() {
     const contenedorResultados = document.getElementById("caja-resultados");
-    try {
+  
         const materias = await fetchJSON('./api/materias.php');
         if (!materias || materias.length === 0) {
             contenedorResultados.innerHTML = h(2, "Resultados") + p("No se encontraron materias registradas.");
@@ -191,59 +174,49 @@ async function cargarRequisitos() {
         }
 
         contenedorResultados.appendChild(ul);
-
-    } catch (error) {
-        console.error("Error al consultar la API de clases:", error);
-        contenedorResultados.innerHTML = h(2, "Resultados") + p("Ocurrió un error al obtener las materias de Prolog.");
-    }
 }
 
 async function mostrarModalRequisitos(codigoMateria, nombreMateria) {
-    const modalExistente = document.getElementById("modal-requisitos");
-    if (modalExistente) {
-        modalExistente.remove();
-    }
 
     const modalRequisitos = dialog(
         "modal-requisitos", 
-        "Requisitos de " + nombreMateria, 
-        p("Cargando requisitos...")
+        "Requisitos de " + nombreMateria
     );
 
     document.body.appendChild(modalRequisitos);
     modalRequisitos.showModal();
 
-    try {
+    
         const requisitos = await fetchJSON('./api/requisitos.php?codigo=' + codigoMateria);
 
-        if (!requisitos || requisitos.length === 0) {
-            modalRequisitos.querySelector("div").innerHTML = p("Esta materia no tiene prerrequisitos registrados.");
-            return;
-        }
 
         let listaHTML = "<ul>";
         for (let i = 0; i < requisitos.length; i++) {
-            listaHTML += "<li>Requisito: <strong>" + requisitos[i].requisitos + "</strong></li>";
+            const req = requisitos[i].requisitos;
+            if (!req || req === "Ninguno") {
+                continue;
+            }
+            listaHTML += "<li>Requisito: <strong>" + req + "</strong></li>";
         }
-        listaHTML += "</ul>";
+        
+        if (listaHTML === "<ul>") {
+            listaHTML = p("Ninguno.");
+        } else {
+            listaHTML += "</ul>";
+        }
 
         modalRequisitos.querySelector("div").innerHTML = listaHTML;
 
-    } catch (error) {
-        console.error("Error al consultar la API de requisitos:", error);
-        modalRequisitos.querySelector("div").innerHTML = p("Ocurrió un error al obtener los requisitos.");
-    }
+
 }
 
 const btnCargarProlog = button("Consultar Base de Conocimiento", () => {
     const cuadroExistente = document.getElementById("caja-opciones");
-    if (cuadroExistente) {
-        cuadroExistente.remove();
-    }
+
 
     const HTMLNuevoCuadro = box(
         h(2, "Opciones Disponibles"),
-        "#e8f4f8",
+        "#a3eaff",
         "caja-opciones"
     );
 

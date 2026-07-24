@@ -6,22 +6,18 @@
  */
 $fixJson = fn($text) => str_replace("'", '"', $text);
 
-$getStudentsByTeacherData = function($codigoProfesor = '') use ($fixJson) {
-    if (empty($codigoProfesor) && isset($_GET['profesor'])) {
-        $codigoProfesor = $_GET['profesor'];
-    }
-
-    $comando = sprintf(
-        "swipl -q -s \"%s\" -g \"estudiantes_de_profesor('%s', L), (member(estudiante(Cue, Nom), L), format('~w,~w~n', [Cue, Nom]), fail ; true)\" -t halt | python3 \"%s\"",
-        __DIR__ . "/../../data-model/rules.pl",
-        $codigoProfesor,
-        __DIR__ . "/../python/process_students.py"
-    );
-
-    $output = shell_exec($comando) ?? "";
-    return trim($output);
-};
+$getStudentsByTeacherData = fn($codigoProfesor = '') => $fixJson(
+    shell_exec(
+        sprintf(
+            "swipl -s \"%s\" -g \"estudiantes_de_profesor('%s', L), member(estudiante(Cue, Nom), L), format('~w,~w~n', [Cue, Nom]), fail ; true\" -t halt | python3 \"%s\"",
+            __DIR__ . "/../../data-model/rules.pl",
+            empty($codigoProfesor) ? ($_GET['profesor'] ?? '') : $codigoProfesor,
+            __DIR__ . "/../python/process_students.py"
+        )
+    ) ?? ""
+);
 
 return [
     "getStudentsByTeacherData" => $getStudentsByTeacherData
 ];
+?>

@@ -7,35 +7,35 @@
     @version 0.1.3
 */
 
-estudiante('20221000759', 'Ivan Alessandro Díaz Villanueva', 'ivan.diaz@unah.hn', 'ingeniería en sistemas', 90).
-estudiante('20221000760', 'Carlos Miguel Hernandez', 'carlos.martinez@unah.hn', 'ingeniería en sistemas', 79).
-estudiante('20221000761', 'Maria Fernanda Antunez', 'maria.macarena@unah.hn', 'ingeniería en sistemas', 69).
-estudiante('20221000762', 'Jose Antonio Salazar', 'jose@unah.hn', 'ingeniería en sistemas', 85).
-estudiante('20211000123', 'Marta Antonieta Carías', 'mcarias@unah.hn', 'ingeniería en sistemas', 78).
-estudiante('20231000112', 'Sofía Alejandra Martínez', 'sofia.martinez@unah.hn', 'ingeniería en sistemas', 88).
-estudiante('20231000445', 'Diego Fernando Ramos', 'diego.ramos@unah.hn', 'ingeniería en sistemas', 74).
-estudiante('20221000890', 'Lucía Gabriela Varela', 'lucia.varela@unah.hn', 'ingeniería en sistemas', 92).
-estudiante('20241000234', 'Andrés Mauricio Castro', 'andres.castro@unah.hn', 'ingeniería en sistemas', 81).
-estudiante('20211000956', 'Elena Beatriz Flores', 'elena.flores@unah.hn', 'ingeniería en sistemas', 76).
-estudiante('20231000501', 'Juan Pablo Zelaya', 'jpzelaya@unah.hn', 'ingeniería en sistemas', 78).
-estudiante('20231000502', 'Valeria Nicolle Paz', 'vnicolle@unah.hn', 'ingeniería en sistemas', 92).
-estudiante('20221000503', 'Gabriel Alejandro Mejía', 'gabriel.mejia@unah.hn', 'ingeniería en sistemas', 62).
-estudiante('20241000504', 'Camila Alejandra Sosa', 'camila.sosa@unah.hn', 'ingeniería en sistemas', 84).
-estudiante('20211000505', 'Ricardo David Moncada', 'ricardo.moncada@unah.hn', 'ingeniería en sistemas', 70).
-estudiante('20231000506', 'Daniela María Argueta', 'dargueta@unah.hn', 'ingeniería en sistemas', 75).
-estudiante('20221000507', 'Eduardo Josué Bonilla', 'ejbonilla@unah.hn', 'ingeniería en sistemas', 68).
-estudiante('20241000508', 'Sara Victoria Lanza', 'sara.lanza@unah.hn', 'ingeniería en sistemas', 98).
-estudiante('20231000509', 'Fernando José Cruz', 'fcruz@unah.hn', 'ingeniería en sistemas', 81).
-estudiante('20221000510', 'Andrea Michelle Madrid', 'amichelle@unah.hn', 'ingeniería en sistemas', 73).
-estudiante('20231000511', 'Luis Armando Castro', 'lacastro@unah.hn', 'ingeniería en sistemas', 64).
-estudiante('20211000512', 'Paola Alejandra Reyes', 'pareyes@unah.hn', 'ingeniería en sistemas', 85).
-estudiante('20241000513', 'Marco Antonio Pineda', 'mapineda@unah.hn', 'ingeniería en sistemas', 77).
-estudiante('20231000514', 'Gabriela Monserrat Videa', 'gmvidea@unah.hn', 'ingeniería en sistemas', 82).
-estudiante('20221000515', 'Carlos Alberto Fúnez', 'cafunez@unah.hn', 'ingeniería en sistemas', 69).
-estudiante('20231000516', 'Sofía Irene Ordóñez', 'sordonez@unah.hn', 'ingeniería en sistemas', 95).
-estudiante('20241000517', 'Javier Ignacio Matamoros', 'jmatamoros@unah.hn', 'ingeniería en sistemas', 71).
-estudiante('20221000518', 'Beatriz Elena Valladares', 'bvalladares@unah.hn', 'ingeniería en sistemas', 80).
-estudiante('20231000519', 'Héctor Manuel Turcios', 'hturcios@unah.hn', 'ingeniería en sistemas', 66).
+estudiante('20221000759', 'Ivan Alessandro Díaz Villanueva', 'ivan.diaz@unah.hn', 'ingeniería en sistemas').
+estudiante('20221000760', 'Carlos Miguel Hernandez', 'carlos.martinez@unah.hn', 'ingeniería en sistemas').
+estudiante('20221000761', 'Maria Fernanda Antunez', 'maria.macarena@unah.hn', 'ingeniería en sistemas').
+estudiante('20221000762', 'Jose Antonio Salazar', 'jose@unah.hn', 'ingeniería en sistemas').
+estudiante('20211000123', 'Marta Antonieta Carías', 'mcarias@unah.hn', 'ingeniería en sistemas').
+estudiante('20231000112', 'Sofía Alejandra Martínez', 'sofia.martinez@unah.hn', 'ingeniería en sistemas').
+estudiante('20231000445', 'Diego Fernando Ramos', 'diego.ramos@unah.hn', 'ingeniería en sistemas').
+estudiante('20221000890', 'Lucía Gabriela Varela', 'lucia.varela@unah.hn', 'ingeniería en sistemas').
+estudiante('20241000234', 'Andrés Mauricio Castro', 'andres.castro@unah.hn', 'ingeniería en sistemas').
+estudiante('20211000956', 'Elena Beatriz Flores', 'elena.flores@unah.hn', 'ingeniería en sistemas').
+estudiante('20231000501', 'Juan Pablo Zelaya', 'jpzelaya@unah.hn', 'ingeniería en sistemas').
+estudiante('20231000502', 'Valeria Nicolle Paz', 'vnicolle@unah.hn', 'ingeniería en sistemas').
+estudiante('20221000503', 'Gabriel Alejandro Mejía', 'gabriel.mejia@unah.hn', 'ingeniería en sistemas').
+estudiante('20241000504', 'Camila Alejandra Sosa', 'camila.sosa@unah.hn', 'ingeniería en sistemas').
+estudiante('20211000505', 'Ricardo David Moncada', 'ricardo.moncada@unah.hn', 'ingeniería en sistemas').
+estudiante('20231000506', 'Daniela María Argueta', 'dargueta@unah.hn', 'ingeniería en sistemas').
+estudiante('20221000507', 'Eduardo Josué Bonilla', 'ejbonilla@unah.hn', 'ingeniería en sistemas').
+estudiante('20241000508', 'Sara Victoria Lanza', 'sara.lanza@unah.hn', 'ingeniería en sistemas').
+estudiante('20231000509', 'Fernando José Cruz', 'fcruz@unah.hn', 'ingeniería en sistemas').
+estudiante('20221000510', 'Andrea Michelle Madrid', 'amichelle@unah.hn', 'ingeniería en sistemas').
+estudiante('20231000511', 'Luis Armando Castro', 'lacastro@unah.hn', 'ingeniería en sistemas').
+estudiante('20211000512', 'Paola Alejandra Reyes', 'pareyes@unah.hn', 'ingeniería en sistemas').
+estudiante('20241000513', 'Marco Antonio Pineda', 'mapineda@unah.hn', 'ingeniería en sistemas').
+estudiante('20231000514', 'Gabriela Monserrat Videa', 'gmvidea@unah.hn', 'ingeniería en sistemas').
+estudiante('20221000515', 'Carlos Alberto Fúnez', 'cafunez@unah.hn', 'ingeniería en sistemas').
+estudiante('20231000516', 'Sofía Irene Ordóñez', 'sordonez@unah.hn', 'ingeniería en sistemas').
+estudiante('20241000517', 'Javier Ignacio Matamoros', 'jmatamoros@unah.hn', 'ingeniería en sistemas').
+estudiante('20221000518', 'Beatriz Elena Valladares', 'bvalladares@unah.hn', 'ingeniería en sistemas').
+estudiante('20231000519', 'Héctor Manuel Turcios', 'hturcios@unah.hn', 'ingeniería en sistemas').
 
 /*
     HECHOS: Profesores, estan conformados por un código de profesor, su nombre y correo.
@@ -151,35 +151,27 @@ aula('F1', 'A105', 50).
 seccion('ISC101-0700', 'ISC-101', '0700', '0001', 'A101', 'B2').
 seccion('ISC101-0800', 'ISC-101', '0800', '0002', 'A102', 'B2').
 seccion('ISC101-1400', 'ISC-101', '1400', '0003', 'A103', 'B2').
-
 seccion('ISC102-0800', 'ISC-102', '0800', '0003', 'A103', 'B2').
 seccion('ISC102-0900', 'ISC-102', '0900', '0001', 'A101', 'B2').
 seccion('ISC102-1500', 'ISC-102', '1500', '0009', 'A104', 'B2').
-
 seccion('ISC201-0900', 'ISC-201', '0900', '0004', 'A104', 'B2').
 seccion('ISC201-1000', 'ISC-201', '1000', '0005', 'A102', 'B2').
 seccion('ISC201-1600', 'ISC-201', '1600', '0006', 'A105', 'B2').
-
 seccion('ISC202-1000', 'ISC-202', '1000', '0005', 'A105', 'B2').
 seccion('ISC202-1100', 'ISC-202', '1100', '0003', 'A103', 'B2').
 seccion('ISC202-1700', 'ISC-202', '1700', '0002', 'A106', 'B2').
-
 seccion('ISC203-0700', 'ISC-203', '0700', '0003', 'A103', 'B2').
 seccion('ISC203-1200', 'ISC-203', '1200', '0001', 'A101', 'B2').
 seccion('ISC203-1800', 'ISC-203', '1800', '0004', 'A104', 'B2').
-
 seccion('ISC204-0800', 'ISC-204', '0800', '0005', 'A105', 'B2').
 seccion('ISC204-1300', 'ISC-204', '1300', '0001', 'A101', 'B2').
 seccion('ISC204-1700', 'ISC-204', '1700', '0003', 'A102', 'B2').
-
 seccion('ISC301-0700', 'ISC-301', '0700', '0006', 'A106', 'B2').
 seccion('ISC301-1100', 'ISC-301', '1100', '0006', 'A106', 'B2').
 seccion('ISC301-1500', 'ISC-301', '1500', '0006', 'A101', 'B2').
-
 seccion('ISC302-0800', 'ISC-302', '0800', '0007', 'A107', 'B2').
 seccion('ISC302-1300', 'ISC-302', '1300', '0007', 'A107', 'B2').
 seccion('ISC302-1600', 'ISC-302', '1600', '0008', 'A102', 'B2').
-
 seccion('ISC303-0900', 'ISC-303', '0900', '0008', 'A108', 'B2').
 seccion('ISC303-1400', 'ISC-303', '1400', '0005', 'A102', 'B2').
 seccion('ISC303-1700', 'ISC-303', '1700', '0008', 'A103', 'B2').
@@ -257,12 +249,77 @@ laboratorio('0701', 'fs200', 'E1', 'Laboratorio de Física').
     @since 2026-07-17
     
 */
-clase_cursada('20221000759', 'ISC-101', 75,'1PAC', '2025').
-clase_cursada('20221000759', 'ISC-102', 28, '2PAC', '2025').
+clase_cursada('20221000759', 'ISC-101', 75, '1PAC', '2025').
+clase_cursada('20221000759', 'ISC-102', 82, '2PAC', '2025').
+clase_cursada('20221000759', 'ISC-201', 88, '1PAC', '2026').
+clase_cursada('20221000759', 'ISC-204', 90, '1PAC', '2026').
+clase_cursada('20221000760', 'ISC-101', 80, '1PAC', '2025').
+clase_cursada('20221000760', 'ISC-102', 55, '2PAC', '2025').
+clase_cursada('20221000760', 'ISC-102', 84, '1PAC', '2026').
+clase_cursada('20221000760', 'ISC-201', 76, '1PAC', '2026').
+clase_cursada('20221000761', 'ISC-101', 65, '1PAC', '2025').
+clase_cursada('20221000761', 'ISC-102', 70, '2PAC', '2025').
+clase_cursada('20221000761', 'ISC-203', 62, '1PAC', '2026').
+clase_cursada('20221000762', 'ISC-101', 90, '1PAC', '2025').
+clase_cursada('20221000762', 'ISC-102', 94, '2PAC', '2025').
+clase_cursada('20221000762', 'ISC-201', 91, '1PAC', '2026').
+clase_cursada('20221000762', 'ISC-204', 89, '1PAC', '2026').
+clase_cursada('20221000762', 'ISC-305', 85, '2PAC', '2026').
+clase_cursada('20211000123', 'ISC-101', 80, '2PAC', '2024').
+clase_cursada('20211000123', 'ISC-102', 75, '1PAC', '2025').
+clase_cursada('20211000123', 'ISC-211', 82, '2PAC', '2025').
+clase_cursada('20211000123', 'ISC-321', 78, '1PAC', '2026').
+clase_cursada('20231000112', 'ISC-101', 94, '2PAC', '2025').
+clase_cursada('20231000112', 'ISC-102', 88, '2PAC', '2025').
+clase_cursada('20231000112', 'ISC-201', 92, '1PAC', '2026').
+clase_cursada('20221000890', 'ISC-101', 95, '2PAC', '2024').
+clase_cursada('20221000890', 'ISC-102', 90, '1PAC', '2025').
+clase_cursada('20221000890', 'ISC-204', 93, '1PAC', '2025').
+clase_cursada('20221000890', 'ISC-305', 91, '2PAC', '2025').
+clase_cursada('20221000890', 'ISC-331', 88, '1PAC', '2026').
+clase_cursada('20211000956', 'ISC-101', 81, '2PAC', '2024').
+clase_cursada('20211000956', 'ISC-102', 77, '1PAC', '2025').
+clase_cursada('20211000956', 'ISC-211', 74, '2PAC', '2025').
+clase_cursada('20231000502', 'ISC-101', 92, '2PAC', '2025').
+clase_cursada('20231000502', 'ISC-102', 91, '2PAC', '2025').
+clase_cursada('20231000502', 'ISC-201', 95, '1PAC', '2026').
+clase_cursada('20231000502', 'ISC-203', 89, '1PAC', '2026').
+clase_cursada('20241000504', 'ISC-101', 84, '1PAC', '2026').
+clase_cursada('20241000504', 'ISC-102', 80, '1PAC', '2026').
+clase_cursada('20241000508', 'ISC-101', 97, '1PAC', '2026').
+clase_cursada('20241000508', 'ISC-102', 96, '1PAC', '2026').
+clase_cursada('20241000508', 'ISC-201', 98, '1PAC', '2026').
+clase_cursada('20241000508', 'ISC-204', 95, '1PAC', '2026').
+clase_cursada('20211000512', 'ISC-101', 85, '2PAC', '2024').
+clase_cursada('20211000512', 'ISC-102', 83, '1PAC', '2025').
+clase_cursada('20211000512', 'ISC-211', 80, '2PAC', '2025').
+clase_cursada('20211000512', 'ISC-312', 86, '1PAC', '2026').
+clase_cursada('20231000516', 'ISC-101', 95, '2PAC', '2025').
+clase_cursada('20231000516', 'ISC-102', 93, '2PAC', '2025').
+clase_cursada('20231000516', 'ISC-201', 90, '1PAC', '2026').
+clase_cursada('20231000516', 'ISC-305', 92, '1PAC', '2026').
 
-
-seccion_impartida('ISC101-0700', 'ISC-101', '0700', '0001', '1PAC', '2025').
-seccion_impartida('ISC102-0900', 'ISC-102', '0900', '0001', '2PAC', '2025').
-
+clase_impartida('ISC-101', '0001', '1PAC', '2025').
+clase_impartida('ISC-102', '0001', '2PAC', '2025').
+clase_impartida('ISC-101', '0001', '1PAC', '2025').
+clase_impartida('ISC-102', '0001', '2PAC', '2025').
+clase_impartida('ISC-204', '0001', '1PAC', '2026').
+clase_impartida('ISC-103', '0007', '1PAC', '2025').
+clase_impartida('ISC-211', '0007', '2PAC', '2025').
+clase_impartida('ISC-321', '0010', '1PAC', '2026').
+clase_impartida('ISC-305', '0010', '2PAC', '2026').
+clase_impartida('ISC-351', '0010', '1PAC', '2026').
+clase_impartida('ISC-331', '0011', '1PAC', '2026').
+clase_impartida('ISC-332', '0011', '2PAC', '2026').
+clase_impartida('ISC-312', '0011', '1PAC', '2026').
+clase_impartida('ISC-333', '0012', '1PAC', '2026').
+clase_impartida('ISC-334', '0012', '2PAC', '2026').
+clase_impartida('ISC-313', '0012', '2PAC', '2026').
+clase_impartida('ISC-341', '0013', '1PAC', '2026').
+clase_impartida('ISC-306', '0013', '2PAC', '2026').
+clase_impartida('ISC-336', '0013', '1PAC', '2026').
+clase_impartida('ISC-407', '0014', '1PAC', '2026').
+clase_impartida('ISC-408', '0014', '2PAC', '2026').
+clase_impartida('ISC-414', '0014', '2PAC', '2026').
 
 

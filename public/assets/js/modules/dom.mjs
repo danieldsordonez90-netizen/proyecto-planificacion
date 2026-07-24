@@ -30,7 +30,6 @@ const printAsAppend = (content) => {
     }
 };
 
-// Barrel Export
 export {
     init, print, printAsAppend,
     h, p, b, li, ul, ol, tag,

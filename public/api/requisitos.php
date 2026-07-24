@@ -1,6 +1,7 @@
+
 <?php
 $funcs = require __DIR__ . '/../../service/php/getRequeriments.php';
-header('Content-Type: application/json; charset=utf-8');
+header('Content-Type: application/json');
 
 $codigo = $_GET['codigo'] ?? '';
-echo $funcs['getRequisitosData']($codigo);
+echo $funcs['getRequerimentsData']($codigo);

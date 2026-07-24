@@ -6,14 +6,19 @@ todas_las_secciones :-
         format('~w,~w,~w,~w,~w,~w~n', [CodSec, CodMateria, Hora, Docente, Aula, Periodo])
     ).
 
-requisitos(CodigoMateria, Requisito) :-
+requisitos(CodigoMateria) :-
     materia(CodigoMateria, _, _, ListaRequisitos),
-    member(Requisito, ListaRequisitos).
+    imprimir_requisitos(ListaRequisitos).
+
+imprimir_requisitos([]).
+imprimir_requisitos([Req|Resto]) :-
+    format('~w~n', [Req]),
+    imprimir_requisitos(Resto).
 
 todas_las_materias :-
     findall(
         (Cod, Nom, Uv, Requisitos),
-        materia(Cod, Nom, Uv, Requisitos),
+        (materia(Cod, Nom, Uv, Requisitos), sub_atom(Cod, 0, 3, _, 'ISC')),
         ListaMaterias
     ),
     imprimir_materias(ListaMaterias).
@@ -22,7 +27,6 @@ imprimir_materias([]).
 imprimir_materias([(Cod, Nom, Uv, Requisitos)|Resto]) :-
     format('~w,~w,~w,~w~n', [Cod, Nom, Uv, Requisitos]),
     imprimir_materias(Resto).
-
 
 obtener_profesores :-
     forall(
@@ -34,9 +38,9 @@ estudiantes_de_profesor(CodProf, ListaEstudiantes) :-
     findall(
         estudiante(Cuenta, Nombre),
         (
-            seccion_impartida(_CodSeccion, CodMateria, _Hora, CodProf, Periodo, Anio),
+            clase_impartida(CodMateria, CodProf, Periodo, Anio),
             clase_cursada(Cuenta, CodMateria, _Nota, Periodo, Anio),
-            estudiante(Cuenta, Nombre, _, _, _)
+            estudiante(Cuenta, Nombre, _, _)
         ),
         ListaConDuplicados
     ),
@@ -60,21 +64,6 @@ nota_maxima_materia(CodMateria, NotaMax) :-
 mejor_estudiante_materia(CodMateria, Cuenta, Nombre, NotaMax) :-
     nota_maxima_materia(CodMateria, NotaMax),
     clase_cursada(Cuenta, CodMateria, NotaMax, _, _),
-    estudiante(Cuenta, Nombre, _, _, _).
-
-indice_estudiante(Cuenta, Promedio) :-
-    estudiante(Cuenta, _, _, _, _),
-    findall(Nota, clase_cursada(Cuenta, _, Nota, _, _), Notas),
-    Notas \= [],
-    sum_list(Notas, Suma),
-    length(Notas, Cantidad),
-    Promedio is Suma / Cantidad.
-
-mejor_estudiante_carrera(Cuenta, Nombre, PromedioMax) :-
-    findall(Prom, (estudiante(C, _, _, _, _), indice_estudiante(C, Prom)), Promedios),
-    Promedios \= [],
-    max_list(Promedios, PromedioMax),
-    indice_estudiante(Cuenta, PromedioMax),
     estudiante(Cuenta, Nombre, _, _, _).
 
 historial_estudiante(Cuenta, Historial) :-
@@ -155,11 +144,38 @@ imprimir_4_planes :-
     ).
 
 
-es_materia_sistemas(CodMateria) :-
-    sub_atom(CodMateria, 0, 3, _, 'ISC').
+% Calcula la suma ponderada (Nota * UV) y el total de UV de un estudiante
+sumatoria_ponderada(Estudiante, SumaPonderada, TotalUV) :-
+    findall(
+        Ponderacion,
+        (
+            clase_cursada(Estudiante, CodMateria, Nota, _, _),
+            materia(CodMateria, _, UV, _),
+            Ponderacion is Nota * UV
+        ),
+        ListaPonderaciones
+    ),
+    findall(
+        UV,
+        (
+            clase_cursada(Estudiante, CodMateria, _, _),
+            materia(CodMateria, _, UV, _)
+        ),
+        ListaUVs
+    ),
+    sum_list(ListaPonderaciones, SumaPonderada),
+    sum_list(ListaUVs, TotalUV).
 
-materia_elegible_sistemas(IdEstudiante, CodMateria) :-
-    materia(CodMateria, _, _, _),
-    es_materia_sistemas(CodMateria),
-    \+ clase_cursada(IdEstudiante, CodMateria, _, _, _),
-    cumple_prerrequisitos(IdEstudiante, CodMateria).
+% Regla principal para obtener el índice global de un estudiante con redondeo a 2 decimales
+indice_global(Estudiante, IndiceFinal) :-
+    sumatoria_ponderada(Estudiante, SumaPonderada, TotalUV),
+    TotalUV > 0, % Evita división por cero
+    IndiceUnico is SumaPonderada / TotalUV,
+    IndiceFinal is round(IndiceUnico * 100) / 100.
+
+mejor_estudiante_carrera(Cuenta, Nombre, PromedioMax) :-
+    findall(Prom, (estudiante(C, _, _, _, _), indice_estudiante(C, Prom)), Promedios),
+    Promedios \= [],
+    max_list(Promedios, PromedioMax),
+    indice_global(Cuenta, PromedioMax),
+    estudiante(Cuenta, Nombre, _, _).
