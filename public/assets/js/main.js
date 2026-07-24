@@ -253,7 +253,7 @@ const btnCargarProlog = button("Consultar Base de Conocimiento", () => {
 
     const btnProf = button("Ver profesores", cargarProfesores);
     const btnSec = button("Ver secciones", cargarSecciones);
-    const btnReq = button("Ver Requisitos de clases", cargarRequisitos);
+    const btnReq = button("Ver clases", cargarRequisitos);
 
     const contenedorBotones = document.createElement("div");
     contenedorBotones.style.display = "flex";
