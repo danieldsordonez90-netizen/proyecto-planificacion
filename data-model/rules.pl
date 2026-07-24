@@ -1,9 +1,5 @@
 :- consult('db.pl').
 
-% ==============================================================================
-% CONSULTAS ACADÉMICAS Y RENDIMIENTO
-% ==============================================================================
-
 prerrequisito(CodigoMateria, Prerrequisitos) :-
     materia(CodigoMateria, _, _, Prerrequisitos).
 
@@ -65,37 +61,29 @@ historial_estudiante(Cuenta, Historial) :-
         Historial
     ).
 
-% ==============================================================================
-% GENERACIÓN DE PLANES DIVERSIFICADOS (FORZANDO DISTANCIA MÍNIMA)
-% ==============================================================================
 
-% 1. Choque departamental: Mismo Horario + (Mismo Docente O Misma Aula)
 secciones_colisionan_dept(Sec1, Sec2) :-
     seccion(Sec1, _, Hora, Docente1, Aula1, _),
     seccion(Sec2, _, Hora, Docente2, Aula2, _),
     (Docente1 == Docente2 ; Aula1 == Aula2).
 
-% 2. Valida compatibilidad interna de un plan
 es_compatible_dept(_, []).
 es_compatible_dept(Sec, [Cabeza|Cola]) :-
     Sec \== Cabeza,
     \+ secciones_colisionan_dept(Sec, Cabeza),
     es_compatible_dept(Sec, Cola).
 
-% 3. Cuenta cuántas secciones distintas tienen dos planes entre sí
 diferencia_planes([], [], 0).
 diferencia_planes([S1|R1], [S2|R2], Dif) :-
     diferencia_planes(R1, R2, DifResto),
     (S1 \== S2 -> Dif is DifResto + 1 ; Dif = DifResto).
 
-% 4. Exige que el nuevo plan difiera en al menos 5 secciones respecto a los anteriores
 es_plan_diferente(_, []).
 es_plan_diferente(NuevoPlan, [PlanExistente|Resto]) :-
     diferencia_planes(NuevoPlan, PlanExistente, Dif),
     Dif >= 5,
     es_plan_diferente(NuevoPlan, Resto).
 
-% 5. Agrupa las 24 asignaturas ISC con sus secciones
 materias_disponibles_sistemas(ListaMateriasConSecciones) :-
     findall(CodMateria, (
         seccion(_, CodMateria, _, _, _, _),
@@ -111,7 +99,6 @@ materias_disponibles_sistemas(ListaMateriasConSecciones) :-
         ListaMateriasConSecciones
     ).
 
-% 6. Construcción recursiva barajando secciones
 construir_plan_estudio([], []).
 construir_plan_estudio([materia_sec(_, Secciones)|RestoMaterias], [SecElegida|RestoPlan]) :-
     random_permutation(Secciones, SeccionesBarajadas),
@@ -119,7 +106,6 @@ construir_plan_estudio([materia_sec(_, Secciones)|RestoMaterias], [SecElegida|Re
     construir_plan_estudio(RestoMaterias, RestoPlan),
     es_compatible_dept(SecElegida, RestoPlan).
 
-% 7. Acumula N planes garantizando que sean sustancialmente diferentes
 generar_n_planes_diferentes(0, _, _, []) :- !.
 generar_n_planes_diferentes(N, Estructura, Acumulados, [Plan|RestoPlanes]) :-
     N > 0,
@@ -129,12 +115,10 @@ generar_n_planes_diferentes(N, Estructura, Acumulados, [Plan|RestoPlanes]) :-
     N1 is N - 1,
     generar_n_planes_diferentes(N1, Estructura, [Plan|Acumulados], RestoPlanes).
 
-% 8. REGLA PRINCIPAL
 generar_4_planes_estudio(CuatroPlanes) :-
     materias_disponibles_sistemas(EstructuraMaterias),
     generar_n_planes_diferentes(4, EstructuraMaterias, [], CuatroPlanes).
 
-% 9. IMPRESIÓN DIRECTA SIN ABREVIACIONES (...)
 imprimir_4_planes :-
     set_prolog_flag(answer_write_options, [max_depth(0)]),
     generar_4_planes_estudio(Planes),
@@ -144,9 +128,6 @@ imprimir_4_planes :-
         (writeln('--------------------------------------------------'), writeln(Plan))
     ).
 
-% ==============================================================================
-% AUXILIARES Y FILTRADOS
-% ==============================================================================
 
 es_materia_sistemas(CodMateria) :-
     sub_atom(CodMateria, 0, 3, _, 'ISC').
