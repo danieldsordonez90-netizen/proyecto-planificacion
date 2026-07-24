@@ -4,16 +4,17 @@
 
 import sys
 
-# Definición de propiedades para la entidad de materias
+# Definición de propiedades manteniendo el prefijo original
 keys = [
     "materia_codigo",
     "materia_nombre",
-    "materia_uv",
-    "materia_prerrequisitos"
+    "materia_uv"
 ]
 
 read_data = lambda: [line for line in str(sys.stdin.read()).strip().split("\n") if line.strip()]
-process_item = lambda text: str(text).strip().split(",")
+
+# Se limpian los espacios y las comillas simples que vienen de Prolog en los campos
+process_item = lambda text: [str(item).strip().strip("'") for item in str(text).strip().split(",")]
 
 process_data = lambda array, keys: [
     {

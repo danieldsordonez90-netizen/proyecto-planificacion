@@ -4,13 +4,9 @@
 
 import sys
 
-# Definición de propiedades para la entidad de estudiantes
 keys = [
     "estudiante_cuenta",
-    "estudiante_name",
-    "estudiante_email",
-    "estudiante_carrera",
-    "estudiante_indice"
+    "estudiante_name"
 ]
 
 read_data = lambda: [line for line in str(sys.stdin.read()).strip().split("\n") if line.strip()]
@@ -18,17 +14,20 @@ process_item = lambda text: str(text).strip().split(",")
 
 process_data = lambda array, keys: [
     {
-        f"{keys[i]}": f"{process_item(item)[i]}" for i in range(len(keys))
+        keys[i]: values[i] 
+        for i in range(min(len(keys), len(values)))
     }
     for item in array
+    for values in [process_item(item)]
 ]
 
-# Imprime el resultado transformado listo para el parseo de PHP
-print(
-    str(
-        process_data(
-            read_data(),
-            keys
-        )
-    ).replace("'", '"')
-)
+# Convertimos la estructura a JSON manual sin comillas simples de Python
+data = process_data(read_data(), keys)
+
+# Formateo a JSON manual string
+json_items = [
+    '{"estudiante_cuenta":"' + item.get("estudiante_cuenta", "") + '","estudiante_name":"' + item.get("estudiante_name", "") + '"}'
+    for item in data
+]
+
+print("[" + ",".join(json_items) + "]")

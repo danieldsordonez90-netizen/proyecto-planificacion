@@ -1,4 +1,3 @@
-// Utilizamos "Template literals" para retornar HTML puro.
 export const tag = (tagName, content = "") => `<${tagName}>${content}</${tagName}>`;
 
 export const h = (level, content) => tag(`h${level}`, content);

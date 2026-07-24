@@ -4,22 +4,25 @@
  * Modified by: ivan.diaz@unah.hn, danields.olivares@unah.hn, christian.vijil@unah.hn
  * Version: 0.1.0
  */
-
 $fixJson = fn($text) => str_replace("'", '"', $text);
 
-$getAllStudentData = fn() =>
-    $fixJson(
-        shell_exec(
-            sprintf(
-                "chcp 65001 >nul && set PYTHONIOENCODING=utf-8 && swipl -s \"%s\" -g \"forall(estudiante(Cue,Nom,Cor,Car,Ind),format('~w,~w,~w,~w,~w~n',[Cue,Nom,Cor,Car,Ind]))\" -t halt | python3 \"%s\"",
-                __DIR__ . "/../../data-model/db.pl",
-                __DIR__ . "/../python/process_students.py"
-            )
-        ) ?? ""
+$getStudentsByTeacherData = function($codigoProfesor = '') use ($fixJson) {
+    if (empty($codigoProfesor) && isset($_GET['profesor'])) {
+        $codigoProfesor = $_GET['profesor'];
+    }
+
+    // Aseguramos la ejecución limpia del goal en SWI-Prolog
+    $comando = sprintf(
+        "swipl -q -s \"%s\" -g \"estudiantes_de_profesor('%s', L), (member(estudiante(Cue, Nom), L), format('~w,~w~n', [Cue, Nom]), fail ; true)\" -t halt | python3 \"%s\"",
+        __DIR__ . "/../../data-model/rules.pl",
+        $codigoProfesor,
+        __DIR__ . "/../python/process_students.py"
     );
 
-echo $getAllStudentData();
+    $output = shell_exec($comando) ?? "";
+    return trim($output);
+};
 
 return [
-    "getAllStudentData" => $getAllStudentData
+    "getStudentsByTeacherData" => $getStudentsByTeacherData
 ];

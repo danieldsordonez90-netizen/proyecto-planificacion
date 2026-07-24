@@ -4,7 +4,7 @@
 
 import sys
 
-# Definición de propiedades para la entidad de profesores
+
 keys = [
     "profesor_codigo",
     "profesor_name",
@@ -21,12 +21,12 @@ process_data = lambda array, keys: [
     for item in array
 ]
 
-# Imprime el resultado transformado listo para el parseo de PHP
+
 print(
     str(
         process_data(
             read_data(),
             keys
         )
-    ).replace("'", '"')
+   ).replace("'", '"')
 )

@@ -1,7 +1,27 @@
 :- consult('db.pl').
 
-prerrequisito(CodigoMateria, Prerrequisitos) :-
+requisitos(CodigoMateria, Prerrequisitos) :-
     materia(CodigoMateria, _, _, Prerrequisitos).
+    
+todas_las_materias :-
+    findall(
+        (Cod, Nom, Uv, Requisitos),
+        materia(Cod, Nom, Uv, Requisitos),
+        ListaMaterias
+    ),
+    imprimir_materias(ListaMaterias).
+
+imprimir_materias([]).
+imprimir_materias([(Cod, Nom, Uv, Requisitos)|Resto]) :-
+    format('~w,~w,~w,~w~n', [Cod, Nom, Uv, Requisitos]),
+    imprimir_materias(Resto).
+
+
+obtener_profesores :-
+    forall(
+        profesor(Codigo, Nombre, Email),
+        format('~w,~w,~w~n', [Codigo, Nombre, Email])
+    ).
 
 estudiantes_de_profesor(CodProf, ListaEstudiantes) :-
     findall(

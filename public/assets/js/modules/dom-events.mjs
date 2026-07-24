@@ -10,7 +10,6 @@ export const button = (text = "Botón", action = () => {}) => {
 export const buttonDemoMessage = (text = "Send", message = "", action = () => {}) => {
     const element = document.createElement("button");
     element.textContent = text;
-    // Utilizamos data attributes para guardar metadata en el nodo
     element.dataset.message = message;
     element.addEventListener("click", action);
     return element;

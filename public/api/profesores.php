@@ -4,6 +4,9 @@
  * Modified by: Iván, Daniels, Christian
  * Version: 0.1.0
  */
-$funcs = require __DIR__ . '/../../service/php/getAllProfesorData.php';
-header('Content-Type: application/json');
-echo $funcs['getAllProfesorData']();
+
+$funcs = require __DIR__ . '/../../service/php/getAllProfesors.php';
+header('Content-Type: application/json; charset=utf-8');
+echo $funcs['getProfesorData']();
+
+?>

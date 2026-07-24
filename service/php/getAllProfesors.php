@@ -7,18 +7,17 @@
 
 $fixJson = fn($text) => str_replace("'", '"', $text);
 
-$getAllProfesorData = fn() =>
-    $fixJson(
-        shell_exec(
-            sprintf(
-                "swipl -s \"%s\" -g \"forall(profesor(Codigo,Name,Email),format('~w,~w,~w~n',[Id,Name,Email]))\" -t halt | python3 \"%s\"",
-                __DIR__ . "/../../data-model/db.pl",
-                __DIR__ . "/../python/process_profesors.py"
-            )
-        ) ?? ""
-    );
-
+$getProfesorData = fn() => $fixJson(
+    shell_exec(
+        sprintf(
+            "swipl -s \"%s\" -g \"forall(profesor(Codigo, Nombre, Correo), format('~w,~w,~w~n',[Codigo,Nombre,Correo]))\" -t halt | python3 \"%s\"",
+            __DIR__ . "/../../data-model/rules.pl",
+            __DIR__ . "/../python/process_profesors.py"
+        )
+    ) ?? ""
+);
 
 return [
-    "getAllProfesorData" => $getAllProfesorData
+    "getProfesorData" => $getProfesorData
 ];
+?>

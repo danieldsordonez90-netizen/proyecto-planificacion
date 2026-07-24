@@ -5,5 +5,8 @@
  * Version: 0.1.0
  */
 $funcs = require __DIR__ . '/../../service/php/getAllStudents.php';
+
 header('Content-Type: application/json');
-echo $funcs['getAllStudentData']();
+
+// Ejecuta la función del servicio que invoca el comando de Prolog/Python
+echo $funcs['getStudentsByTeacherData']();
