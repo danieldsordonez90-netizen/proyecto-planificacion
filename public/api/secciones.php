@@ -4,6 +4,6 @@
  * Modified by: Iván, Daniels, Christian
  * Version: 0.1.0
  */
-$funcs = require __DIR__ . '/../../service/php/getAllSectionData.php';
+$funcs = require __DIR__ . '/../../service/php/getAllSections.php';
 header('Content-Type: application/json');
 echo $funcs['getAllSectionData']();

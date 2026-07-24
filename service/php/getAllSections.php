@@ -11,8 +11,8 @@ $getAllSectionData = fn() =>
     $fixJson(
         shell_exec(
             sprintf(
-                "swipl -s \"%s\" -g \"forall(seccion(Codigo,CodMat,Hora,CodProf,Edif, Aula),format('~w,~w,~w,~w~n',[Id,CodMat,Hora,CodProf]))\" -t halt | python3 \"%s\"",
-                __DIR__ . "/../../data-model/db.pl",
+                "swipl -s \"%s\" -g \"todas_las_secciones\" -t halt | python3 \"%s\"",
+                __DIR__ . "/../../data-model/rules.pl",
                 __DIR__ . "/../python/process_sections.py"
             )
         ) ?? ""

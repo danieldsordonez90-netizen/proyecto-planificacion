@@ -118,7 +118,36 @@ async function cargarAlumnosPorProfesor(codigoProfesor, nombreProfesor) {
 
 async function cargarSecciones() {
     const contenedorResultados = document.getElementById("caja-resultados");
-    contenedorResultados.innerHTML = h(2, "Secciones") + p("Cargando secciones...");
+    try {
+        const secciones = await fetchJSON('./api/secciones.php');
+        if (!secciones || secciones.length === 0) {
+            contenedorResultados.innerHTML = h(2, "Resultados") + p("No se encontraron secciones registradas.");
+            return;
+        }
+
+        contenedorResultados.innerHTML = h(2, "Secciones Registradas");
+
+        const ul = document.createElement("ul");
+
+        for (let i = 0; i < secciones.length; i++) {
+            const sData = secciones[i];
+            
+            const li = document.createElement("li");
+            li.style.marginBottom = "8px";
+
+            const infoSeccion = document.createElement("span");
+            infoSeccion.innerHTML = "<strong>" + sData.codigo + "</strong> - Materia: " + sData.codigoMateria + " | Hora: " + sData.hora + " | Docente: " + sData.docente + " | Aula: " + sData.aula + " (Periodo: " + sData.periodo + ")";
+
+            li.appendChild(infoSeccion);
+            ul.appendChild(li);
+        }
+
+        contenedorResultados.appendChild(ul);
+
+    } catch (error) {
+        console.error("Error al consultar la API de secciones:", error);
+        contenedorResultados.innerHTML = h(2, "Resultados") + p("Ocurrió un error al obtener las secciones de Prolog.");
+    }
 }
 
 async function cargarRequisitos() {

@@ -1,8 +1,15 @@
 :- consult('db.pl').
 
+todas_las_secciones :-
+    forall(
+        seccion(CodSec, CodMateria, Hora, Docente, Aula, Periodo),
+        format('~w,~w,~w,~w,~w,~w~n', [CodSec, CodMateria, Hora, Docente, Aula, Periodo])
+    ).
+
 requisitos(CodigoMateria, Requisito) :-
     materia(CodigoMateria, _, _, ListaRequisitos),
     member(Requisito, ListaRequisitos).
+
 todas_las_materias :-
     findall(
         (Cod, Nom, Uv, Requisitos),
@@ -142,7 +149,6 @@ generar_4_planes_estudio(CuatroPlanes) :-
 imprimir_4_planes :-
     set_prolog_flag(answer_write_options, [max_depth(0)]),
     generar_4_planes_estudio(Planes),
-    writeln('=== 4 PLANES DIVERSIFICADOS GENERADOS ==='),
     forall(
         member(Plan, Planes),
         (writeln('--------------------------------------------------'), writeln(Plan))
