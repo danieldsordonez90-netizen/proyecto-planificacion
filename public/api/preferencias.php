@@ -1,4 +1,5 @@
 <?php
+
 // Recibimos los parámetros por GET
 $action = isset($_GET['action']) ? $_GET['action'] : 'get';
 $theme = isset($_GET['theme']) ? $_GET['theme'] : null;

@@ -2,7 +2,8 @@ import {
     init, print, printAsAppend,
     h, p, box, columns,
     button, dialog, fetchJSON,
-    initTheme, themeToggleButton
+    initTheme, themeToggleButton,
+    buildStatsDialog, statsButton
 } from './modules/dom.mjs';
 
 init('body');
@@ -271,3 +272,14 @@ document.getElementById('caja-acciones').appendChild(btnCargarProlog);
 printAsAppend(modalBase);
 
 printAsAppend(themeToggleButton());
+
+const iniciarEstadisticas = async () => {
+    // 1. Inyectas el botón donde lo necesites en la interfaz
+    printAsAppend(statsButton('Mostrar Indicadores'));
+
+    // 2. Construyes e inyectas el HTML oculto del <dialog> en el DOM
+    const statsModalHTML = await buildStatsDialog();
+    printAsAppend(statsModalHTML);
+};
+
+iniciarEstadisticas();

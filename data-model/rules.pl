@@ -189,3 +189,16 @@ mejor_estudiante_carrera(Cuenta, Nombre, PromedioMax) :-
     max_list(ListaPromedios, PromedioMax),
     member(Cuenta-PromedioMax, Promedios),
     estudiante(Cuenta, Nombre, _, _).
+
+% Regla corregida para contadores globales
+contadores_globales(TotalAlumnos, TotalProfesores, TotalAsignaturas, TotalSecciones) :-
+    findall(A, estudiante(A, _, _, _), ListA), length(ListA, TotalAlumnos),
+    findall(P, profesor(P, _, _), ListP), length(ListP, TotalProfesores),
+    findall(M, materia(M, _, _, _), ListM), length(ListM, TotalAsignaturas),
+    findall(S, seccion(S, _, _, _, _, _), ListS), length(ListS, TotalSecciones).
+
+% Regla corregida para distribución de notas calculando dinámicamente el índice
+distribucion_notas(Sobresaliente, Regular, Bajo) :-
+    findall(I, (estudiante(Cuenta, _, _, _), indice_global(Cuenta, I), I >= 80, I =< 100), ListaS), length(ListaS, Sobresaliente),
+    findall(I, (estudiante(Cuenta, _, _, _), indice_global(Cuenta, I), I >= 65, I < 80), ListaR), length(ListaR, Regular),
+    findall(I, (estudiante(Cuenta, _, _, _), indice_global(Cuenta, I), I >= 0, I < 65), ListaB), length(ListaB, Bajo).
