@@ -2,8 +2,8 @@
 
 todas_las_secciones :-
     forall(
-        seccion(CodSec, CodMateria, Hora, Docente, Aula, Periodo),
-        format('~w,~w,~w,~w,~w,~w~n', [CodSec, CodMateria, Hora, Docente, Aula, Periodo])
+        seccion(CodSec, CodMateria, Hora, Docente, Aula, Edificio),
+        format('~w,~w,~w,~w,~w,~w~n', [CodSec, CodMateria, Hora, Docente, Aula, Edificio])
     ).
 
 requisitos(CodigoMateria) :-
@@ -32,6 +32,13 @@ obtener_profesores :-
     forall(
         profesor(Codigo, Nombre, Email),
         format('~w,~w,~w~n', [Codigo, Nombre, Email])
+    ).
+
+obtener_alumnos :-
+    forall(
+        estudiante(Codigo, Nombre, Correo, Carrera),
+        format('~w,~w,~w,~w~n',
+               [Codigo, Nombre, Correo, Carrera])
     ).
 
 estudiantes_de_profesor(CodProf, ListaEstudiantes) :-
@@ -64,7 +71,7 @@ nota_maxima_materia(CodMateria, NotaMax) :-
 mejor_estudiante_materia(CodMateria, Cuenta, Nombre, NotaMax) :-
     nota_maxima_materia(CodMateria, NotaMax),
     clase_cursada(Cuenta, CodMateria, NotaMax, _, _),
-    estudiante(Cuenta, Nombre, _, _, _).
+    estudiante(Cuenta, Nombre, _, _).
 
 historial_estudiante(Cuenta, Historial) :-
     findall(
@@ -158,7 +165,7 @@ sumatoria_ponderada(Estudiante, SumaPonderada, TotalUV) :-
     findall(
         UV,
         (
-            clase_cursada(Estudiante, CodMateria, _, _),
+            clase_cursada(Estudiante, CodMateria, _, _, _),
             materia(CodMateria, _, UV, _)
         ),
         ListaUVs
@@ -174,8 +181,11 @@ indice_global(Estudiante, IndiceFinal) :-
     IndiceFinal is round(IndiceUnico * 100) / 100.
 
 mejor_estudiante_carrera(Cuenta, Nombre, PromedioMax) :-
-    findall(Prom, (estudiante(C, _, _, _, _), indice_estudiante(C, Prom)), Promedios),
+    findall(
+        C-Prom, (estudiante(C, _, _, _), indice_global(C, Prom)), Promedios
+    ),
     Promedios \= [],
-    max_list(Promedios, PromedioMax),
-    indice_global(Cuenta, PromedioMax),
+    findall(P, member(_-P, Promedios), ListaPromedios),
+    max_list(ListaPromedios, PromedioMax),
+    member(Cuenta-PromedioMax, Promedios),
     estudiante(Cuenta, Nombre, _, _).
