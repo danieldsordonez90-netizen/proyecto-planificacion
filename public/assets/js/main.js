@@ -35,7 +35,6 @@ async function cargarProfesores() {
    
         const profesores = await fetchJSON('./api/profesores.php');        
 
-
         contenedorResultados.innerHTML = h(2, "Profesores Registrados");
 
         const ul = document.createElement("ul");
@@ -68,8 +67,6 @@ async function cargarProfesores() {
         }
 
         contenedorResultados.appendChild(ul);
-
-   
 }
 
 async function cargarAlumnosPorProfesor(codigoProfesor, nombreProfesor) {
@@ -103,8 +100,6 @@ async function cargarAlumnosPorProfesor(codigoProfesor, nombreProfesor) {
 
         document.body.appendChild(modalAlumnos);
         modalAlumnos.showModal();
-
-   
 }
 
 async function cargarSecciones() {
@@ -112,7 +107,6 @@ async function cargarSecciones() {
     
         const secciones = await fetchJSON('./api/secciones.php');
        
-
         contenedorResultados.innerHTML = h(2, "Secciones Registradas");
 
         const ul = document.createElement("ul");
@@ -186,9 +180,7 @@ async function mostrarModalRequisitos(codigoMateria, nombreMateria) {
     document.body.appendChild(modalRequisitos);
     modalRequisitos.showModal();
 
-    
         const requisitos = await fetchJSON('./api/requisitos.php?codigo=' + codigoMateria);
-
 
         let listaHTML = "<ul>";
         for (let i = 0; i < requisitos.length; i++) {
@@ -206,9 +198,33 @@ async function mostrarModalRequisitos(codigoMateria, nombreMateria) {
         }
 
         modalRequisitos.querySelector("div").innerHTML = listaHTML;
-
-
 }
+
+async function cargarTodosLosEstudiantes() {
+    const contenedorResultados = document.getElementById("caja-resultados");
+    
+    const estudiantes = await fetchJSON('./api/lista_estudiantes.php');
+    
+    contenedorResultados.innerHTML = h(2, "Estudiantes Registrados");
+
+    const ul = document.createElement("ul");
+
+    for (let i = 0; i < estudiantes.length; i++) {
+        const eData = estudiantes[i];
+        
+        const li = document.createElement("li");
+        li.style.marginBottom = "8px";
+
+        const infoEstudiante = document.createElement("span");
+        infoEstudiante.innerHTML = "<strong>" + eData.codigo + "</strong>: " + eData.nombre + " ( " + eData.correo + " )";
+
+        li.appendChild(infoEstudiante);
+        ul.appendChild(li);
+    }
+
+    contenedorResultados.appendChild(ul);
+}
+// -------------------------------------------------------------------
 
 const btnCargarProlog = button("Consultar Base de Conocimiento", () => {
     const cuadroExistente = document.getElementById("caja-opciones");
@@ -227,6 +243,8 @@ const btnCargarProlog = button("Consultar Base de Conocimiento", () => {
     const btnProf = button("Ver profesores", cargarProfesores);
     const btnSec = button("Ver secciones", cargarSecciones);
     const btnReq = button("Ver clases", cargarRequisitos);
+    
+    const btnEst = button("Ver estudiantes", cargarTodosLosEstudiantes);
 
     const contenedorBotones = document.createElement("div");
     contenedorBotones.style.display = "flex";
@@ -237,6 +255,8 @@ const btnCargarProlog = button("Consultar Base de Conocimiento", () => {
     contenedorBotones.appendChild(btnProf);
     contenedorBotones.appendChild(btnSec);
     contenedorBotones.appendChild(btnReq);
+    
+    contenedorBotones.appendChild(btnEst);
 
     nuevoCuadroNode.appendChild(contenedorBotones);
     elementoColIzq.appendChild(nuevoCuadroNode);

@@ -179,3 +179,9 @@ mejor_estudiante_carrera(Cuenta, Nombre, PromedioMax) :-
     max_list(Promedios, PromedioMax),
     indice_global(Cuenta, PromedioMax),
     estudiante(Cuenta, Nombre, _, _).
+
+obtener_alumnos :-
+    forall(
+        estudiante(Codigo, Nombre, Correo, _),
+        format('~w,~w,~w~n', [Codigo, Nombre, Correo])
+    ).
