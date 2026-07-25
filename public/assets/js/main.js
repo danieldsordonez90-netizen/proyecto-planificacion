@@ -232,6 +232,7 @@ async function cargarTodosLosEstudiantes() {
 const btnCargarProlog = button("Consultar Base de Conocimiento", () => {
     const cuadroExistente = document.getElementById("caja-opciones");
 
+    if (cuadroExistente) return;
 
     const HTMLNuevoCuadro = box(
         h(2, "Opciones Disponibles"),
