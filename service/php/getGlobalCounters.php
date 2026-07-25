@@ -12,10 +12,11 @@ $getGlobalCounters = fn() =>
     $fixJson(
         shell_exec(
             sprintf(
-                "swipl -s \"%s\" -g \"findall(Cue, estudiante(Cue,_,_,_,_), L1), length(L1, TotalEst), findall(Id, profesor(Id,_,_), L2), length(L2, TotalProf), findall(Cod, materia(Cod,_,_,_), L3), length(L3, TotalMat), findall(IdS, seccion(IdS,_,_,_), L4), length(L4, TotalSec), format('~w,~w,~w,~w~n', [TotalEst, TotalProf, TotalMat, TotalSec])\" -t halt | python3 \"%s\"",
+                "swipl -s \"%s\" -l \"%s\" -g \"contadores_globales(TotalEst, TotalProf, TotalMat, TotalSec), format('~w,~w,~w,~w~n', [TotalEst, TotalProf, TotalMat, TotalSec]), halt\" -t halt | python3 \"%s\"",
                 __DIR__ . "/../../data-model/db.pl",
+                __DIR__ . "/../../data-model/rules.pl",
                 __DIR__ . "/../python/process_global_counters.py"
-                )
+            )
         ) ?? ""
     );
 

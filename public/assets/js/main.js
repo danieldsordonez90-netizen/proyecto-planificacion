@@ -1,9 +1,9 @@
-
 import {
     init, print, printAsAppend,
     h, p, box, columns,
     button, dialog, fetchJSON,
-    initTheme, themeToggleButton
+    initTheme, themeToggleButton,
+    buildStatsDialog, statsButton
 } from './modules/dom.mjs';
 
 init('body');
@@ -481,6 +481,16 @@ document.getElementById('caja-acciones').appendChild(btnLimpiar);
 const modalBase = dialog("modal-aviso", "Estado de la Consulta", p("La petición ha sido procesada con éxito."));
 
 document.getElementById('caja-acciones').appendChild(btnCargarProlog);
+
+// Añadir el botón de indicadores directamente en la caja roja
+document.getElementById('caja-acciones').appendChild(statsButton('Mostrar Indicadores'));
+
 printAsAppend(modalBase);
 
 printAsAppend(themeToggleButton());
+
+const iniciarEstadisticasModal = async () => {
+    const statsModalHTML = await buildStatsDialog();
+    printAsAppend(statsModalHTML);
+};
+iniciarEstadisticasModal();

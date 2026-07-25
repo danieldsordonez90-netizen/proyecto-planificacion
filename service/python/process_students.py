@@ -14,18 +14,16 @@ process_item = lambda text: str(text).strip().split(",")
 
 process_data = lambda array, keys: [
     {
-        keys[i]: values[i] 
-        for i in range(min(len(keys), len(values)))
+        f"{keys[i]}": f"{process_item(item)[i]}" for i in range(len(keys))
     }
     for item in array
-    for values in [process_item(item)]
 ]
 
-data = process_data(read_data(), keys)
-
-json_items = [
-    '{"estudiante_cuenta":"' + item.get("estudiante_cuenta", "") + '","estudiante_name":"' + item.get("estudiante_name", "") + '"}'
-    for item in data
-]
-
-print("[" + ",".join(json_items) + "]")
+print(
+    str(
+        process_data(
+            read_data(),
+            keys
+        )
+    ).replace("'", '"')
+)

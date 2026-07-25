@@ -5,10 +5,9 @@
 import sys
 
 keys = [
-    "total_alumnos",
-    "total_profesores",
-    "total_asignaturas",
-    "total_secciones"
+    "sobresaliente",
+    "regular",
+    "bajo"
 ]
 
 read_data = lambda: [line for line in str(sys.stdin.read()).strip().split("\n") if line.strip()]
