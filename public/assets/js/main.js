@@ -1,3 +1,4 @@
+
 import {
     init, print, printAsAppend,
     h, p, box, columns,
@@ -64,8 +65,22 @@ async function cargarProfesores() {
                 await cargarAlumnosPorProfesor(pData.profesor_codigo, pData.profesor_name);
             });
 
+            const linkClases = document.createElement("a");
+            linkClases.textContent = "Ver clases";
+            linkClases.href = "#";
+            linkClases.style.marginLeft = "8px";
+            linkClases.style.color = "#05a437";
+            linkClases.style.textDecoration = "underline";
+            linkClases.style.cursor = "pointer";
+
+            linkClases.addEventListener("click", async function(event) {
+                event.preventDefault();
+                await mostrarModalClasesProfesor(pData.profesor_codigo, pData.profesor_name);
+            });
+
             li.appendChild(infoProfesor);
             li.appendChild(linkAlumnos);
+            li.appendChild(linkClases);
             ul.appendChild(li);
         }
 
@@ -105,6 +120,39 @@ async function cargarAlumnosPorProfesor(codigoProfesor, nombreProfesor) {
         modalAlumnos.showModal();
 }
 
+async function mostrarModalClasesProfesor(codigoProfesor, nombreProfesor) {
+    const modalExistente = document.getElementById("modal-clases-profesor");
+    if (modalExistente) {
+        modalExistente.remove();
+    }
+
+    const modalClases = dialog(
+        "modal-clases-profesor", 
+        "Clases de " + nombreProfesor
+    );
+
+    document.body.appendChild(modalClases);
+    modalClases.showModal();
+
+    const resultado = await fetchJSON('./api/clases_de_profesor.php?codigo=' + codigoProfesor);
+
+    let contenidoHTML = "";
+    
+    if (resultado && resultado.length > 0) {
+        let listaHTML = "<ul>";
+        for (let i = 0; i < resultado.length; i++) {
+            const clase = resultado[i];
+            listaHTML += "<li><strong>" + clase.codigo + "</strong> - " + clase.nombre + " (Periodo: " + clase.periodo + " - " + clase.anio + ")</li>";
+        }
+        listaHTML += "</ul>";
+        contenidoHTML = listaHTML;
+    } else {
+        contenidoHTML = p("No se encontraron clases registradas para este profesor.");
+    }
+
+    modalClases.querySelector("div").innerHTML = contenidoHTML;
+}
+
 async function cargarSecciones() {
     const contenedorResultados = document.getElementById("caja-resultados");
     
@@ -121,7 +169,7 @@ async function cargarSecciones() {
             li.style.marginBottom = "8px";
 
             const infoSeccion = document.createElement("span");
-            infoSeccion.innerHTML = "<strong>" + sData.codigo + "</strong> - Materia: " + sData.codigoMateria + " | Hora: " + sData.hora + " | Docente: " + sData.docente + " | Aula: " + sData.aula + " (Periodo: " + sData.periodo + ")";
+            infoSeccion.innerHTML = "<strong>" + sData.codigo + "</strong> - Materia: " + sData.codigoMateria + " | Hora: " + sData.hora + " | Docente: " + sData.docente + " | Aula: " + sData.aula + " (Edificio: " + sData.periodo + ")";
 
             li.appendChild(infoSeccion);
             ul.appendChild(li);
@@ -221,13 +269,159 @@ async function cargarTodosLosEstudiantes() {
         const infoEstudiante = document.createElement("span");
         infoEstudiante.innerHTML = "<strong>" + eData.codigo + "</strong>: " + eData.nombre + " ( " + eData.correo + " )";
 
+        const linkClases = document.createElement("a");
+        linkClases.textContent = "Ver clases cursadas";
+        linkClases.href = "#";
+        linkClases.style.marginLeft = "8px";
+        linkClases.style.color = "#05a437";
+        linkClases.style.textDecoration = "underline";
+        linkClases.style.cursor = "pointer";
+
+        linkClases.addEventListener("click", function(event) {
+            event.preventDefault();
+            mostrarModalClases(eData.codigo, eData.nombre);
+        });
+
         li.appendChild(infoEstudiante);
+        li.appendChild(linkClases);
         ul.appendChild(li);
     }
 
     contenedorResultados.appendChild(ul);
 }
-// -------------------------------------------------------------------
+
+async function mostrarModalClases(codigoEstudiante, nombreEstudiante) {
+    const modalExistente = document.getElementById("modal-clases");
+    if (modalExistente) {
+        modalExistente.remove();
+    }
+
+    const modalClases = dialog(
+        "modal-clases", 
+        "Clases cursadas por " + nombreEstudiante
+    );
+
+    document.body.appendChild(modalClases);
+    modalClases.showModal();
+
+    const resultado = await fetchJSON('./api/clases_de_estudiante.php?cuenta=' + codigoEstudiante);
+
+    let contenidoHTML = "";
+    
+    if (resultado && resultado.length > 0) {
+        let listaHTML = "<ul>";
+        for (let i = 0; i < resultado.length; i++) {
+            const clase = resultado[i];
+            listaHTML += "<li><strong>" + clase.codigo + "</strong> - " + clase.nombre + " (Nota: " + clase.calificacion + "%)</li>";
+        }
+        listaHTML += "</ul>";
+        contenidoHTML = listaHTML;
+    } else {
+        contenidoHTML = p("No se encontraron clases cursadas para este estudiante.");
+    }
+
+    modalClases.querySelector("div").innerHTML = contenidoHTML;
+}
+
+async function cargarIndicesGlobales() {
+    const contenedorResultados = document.getElementById("caja-resultados");
+    
+    const resultado = await fetchJSON('./api/indice_global.php');
+    
+    contenedorResultados.innerHTML = h(2, "Mejores Índices Globales");
+
+    let contenidoHTML = "";
+    
+    if (resultado && resultado.length > 0) {
+        let listaHTML = "<ul>";
+        for (let i = 0; i < resultado.length; i++) {
+            const item = resultado[i];
+            listaHTML += "<li><strong>" + item.codigo + "</strong> - " + item.nombre + " | Índice: " + item.indice + "</li>";
+        }
+        listaHTML += "</ul>";
+        contenidoHTML = listaHTML;
+    } else {
+        contenidoHTML = p("No se encontraron registros de índices globales.");
+    }
+
+    contenedorResultados.innerHTML += contenidoHTML;
+}
+
+async function cargarIndicesPorClase() {
+    const contenedorResultados = document.getElementById("caja-resultados");
+  
+    const materias = await fetchJSON('./api/materias.php');
+    if (!materias || materias.length === 0) {
+        contenedorResultados.innerHTML = h(2, "Resultados") + p("No se encontraron materias registradas.");
+        return;
+    }
+
+    contenedorResultados.innerHTML = h(2, "Materias - Mejores Índices por Clase");
+
+    const ul = document.createElement("ul");
+
+    for (let i = 0; i < materias.length; i++) {
+        const mData = materias[i];
+        
+        const li = document.createElement("li");
+        li.style.marginBottom = "8px";
+
+        const infoMateria = document.createElement("span");
+        infoMateria.innerHTML = "<strong>" + mData.materia_codigo + "</strong>: " + mData.materia_nombre + " (UV: " + mData.materia_uv + ") ";
+
+        const linkIndices = document.createElement("a");
+        linkIndices.textContent = "Ver índices";
+        linkIndices.href = "#";
+        linkIndices.style.marginLeft = "8px";
+        linkIndices.style.color = "#05a437";
+        linkIndices.style.textDecoration = "underline";
+        linkIndices.style.cursor = "pointer";
+
+        linkIndices.addEventListener("click", function(event) {
+            event.preventDefault();
+            mostrarModalIndicesPorClase(mData.materia_codigo, mData.materia_nombre);
+        });
+
+        li.appendChild(infoMateria);
+        li.appendChild(linkIndices);
+        ul.appendChild(li);
+    }
+
+    contenedorResultados.appendChild(ul);
+}
+
+async function mostrarModalIndicesPorClase(codigoMateria, nombreMateria) {
+    const modalExistente = document.getElementById("modal-indices-clase");
+    if (modalExistente) {
+        modalExistente.remove();
+    }
+
+    const modalIndices = dialog(
+        "modal-indices-clase", 
+        "Mejores índices en " + nombreMateria
+    );
+
+    document.body.appendChild(modalIndices);
+    modalIndices.showModal();
+
+    const resultado = await fetchJSON('./api/indice_por_clase.php?codigo=' + codigoMateria);
+
+    let contenidoHTML = "";
+    
+    if (resultado && resultado.length > 0) {
+        let listaHTML = "<ul>";
+        for (let i = 0; i < resultado.length; i++) {
+            const item = resultado[i];
+            listaHTML += "<li><strong>" + item.codigo + "</strong> - " + item.nombre + " | Nota: " + item.indice + "</li>";
+        }
+        listaHTML += "</ul>";
+        contenidoHTML = listaHTML;
+    } else {
+        contenidoHTML = p("No se encontraron registros de índices para esta clase.");
+    }
+
+    modalIndices.querySelector("div").innerHTML = contenidoHTML;
+}
 
 const btnCargarProlog = button("Consultar Base de Conocimiento", () => {
     const cuadroExistente = document.getElementById("caja-opciones");
@@ -247,8 +441,9 @@ const btnCargarProlog = button("Consultar Base de Conocimiento", () => {
     const btnProf = button("Ver profesores", cargarProfesores);
     const btnSec = button("Ver secciones", cargarSecciones);
     const btnReq = button("Ver clases", cargarRequisitos);
-    
     const btnEst = button("Ver estudiantes", cargarTodosLosEstudiantes);
+    const btnIndGlobal = button("Indices globales", cargarIndicesGlobales);
+    const btnIndClase = button("Indices por clase", cargarIndicesPorClase);
 
     const contenedorBotones = document.createElement("div");
     contenedorBotones.style.display = "flex";
@@ -259,8 +454,9 @@ const btnCargarProlog = button("Consultar Base de Conocimiento", () => {
     contenedorBotones.appendChild(btnProf);
     contenedorBotones.appendChild(btnSec);
     contenedorBotones.appendChild(btnReq);
-    
     contenedorBotones.appendChild(btnEst);
+    contenedorBotones.appendChild(btnIndGlobal);
+    contenedorBotones.appendChild(btnIndClase);
 
     nuevoCuadroNode.appendChild(contenedorBotones);
     elementoColIzq.appendChild(nuevoCuadroNode);

@@ -1,3 +1,4 @@
+
 <?php
 
 /**
@@ -8,17 +9,18 @@
 
 $fixJson = fn($text) => str_replace("'", '"', $text);
 
-$getAllStudentsData = fn() => $fixJson(
+$getProfesorClassesData = fn($codigo) => $fixJson(
     shell_exec(
         sprintf(
-            "swipl -s \"%s\" -g \"obtener_alumnos\" -t halt | python3 \"%s\"",
+            "swipl -s \"%s\" -g \"obtener_clases_profesor('%s')\" -t halt | python3 \"%s\"",
             __DIR__ . "/../../data-model/rules.pl",
-            __DIR__ . "/../python/process_students_list.py"
+            $codigo,
+            __DIR__ . "/../python/process_profesor_classes.py"
         )
     ) ?? ""
 );
 
 return [
-    "getAllStudentsData" => $getAllStudentsData
+    "getProfesorClassesData" => $getProfesorClassesData
 ];
 ?>

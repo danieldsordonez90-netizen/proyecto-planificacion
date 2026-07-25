@@ -8,17 +8,18 @@
 
 $fixJson = fn($text) => str_replace("'", '"', $text);
 
-$getAllStudentsData = fn() => $fixJson(
+$getIndicesPorClaseData = fn($codigoMateria) => $fixJson(
     shell_exec(
         sprintf(
-            "swipl -s \"%s\" -g \"obtener_alumnos\" -t halt | python3 \"%s\"",
+            "swipl -s \"%s\" -g \"obtener_mejores_indices_clase('%s')\" -t halt | python3 \"%s\"",
             __DIR__ . "/../../data-model/rules.pl",
-            __DIR__ . "/../python/process_students_list.py"
+            $codigoMateria,
+            __DIR__ . "/../python/process_index_per_class.py"
         )
     ) ?? ""
 );
 
 return [
-    "getAllStudentsData" => $getAllStudentsData
+    "getIndicesPorClaseData" => $getIndicesPorClaseData
 ];
 ?>

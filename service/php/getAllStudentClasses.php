@@ -8,17 +8,18 @@
 
 $fixJson = fn($text) => str_replace("'", '"', $text);
 
-$getAllStudentsData = fn() => $fixJson(
+$getClassesData = fn($cuenta) => $fixJson(
     shell_exec(
         sprintf(
-            "swipl -s \"%s\" -g \"obtener_alumnos\" -t halt | python3 \"%s\"",
+            "swipl -s \"%s\" -g \"obtener_clases_estudiante('%s')\" -t halt | python3 \"%s\"",
             __DIR__ . "/../../data-model/rules.pl",
-            __DIR__ . "/../python/process_students_list.py"
+            $cuenta,
+            __DIR__ . "/../python/process_student_classes.py"
         )
     ) ?? ""
 );
 
 return [
-    "getAllStudentsData" => $getAllStudentsData
+    "getClassesData" => $getClassesData
 ];
 ?>
