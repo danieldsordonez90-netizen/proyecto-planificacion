@@ -1,14 +1,17 @@
 import {
     init, print, printAsAppend,
     h, p, box, columns,
-    button, dialog, fetchJSON
+    button, dialog, fetchJSON,
+    initTheme, themeToggleButton
 } from './modules/dom.mjs';
 
 init('body');
+initTheme();
 
 const encabezado = box(
     h(1, "Sistema de Horarios Prolog"),
-    "#3887c0"
+    "#3887c0",
+    "bg-blue"
 );
 
 const colIzqInicial = box(
@@ -266,3 +269,5 @@ const modalBase = dialog("modal-aviso", "Estado de la Consulta", p("La petición
 
 document.getElementById('caja-acciones').appendChild(btnCargarProlog);
 printAsAppend(modalBase);
+
+printAsAppend(themeToggleButton());

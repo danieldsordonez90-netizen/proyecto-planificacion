@@ -1,4 +1,3 @@
-
 /*
     HECHO:Estudiantes, estan conformados por un numero de cuenta, su nombre, correo, carrera que estudian y su índice global.
     @author ivan.diaz@unah.hn
@@ -7,35 +6,35 @@
     @version 0.1.3
 */
 
-estudiante('20221000759', 'Ivan Alessandro Díaz Villanueva', 'ivan.diaz@unah.hn', 'ingeniería en sistemas').
-estudiante('20221000760', 'Carlos Miguel Hernandez', 'carlos.martinez@unah.hn', 'ingeniería en sistemas').
-estudiante('20221000761', 'Maria Fernanda Antunez', 'maria.macarena@unah.hn', 'ingeniería en sistemas').
-estudiante('20221000762', 'Jose Antonio Salazar', 'jose@unah.hn', 'ingeniería en sistemas').
-estudiante('20211000123', 'Marta Antonieta Carías', 'mcarias@unah.hn', 'ingeniería en sistemas').
-estudiante('20231000112', 'Sofía Alejandra Martínez', 'sofia.martinez@unah.hn', 'ingeniería en sistemas').
-estudiante('20231000445', 'Diego Fernando Ramos', 'diego.ramos@unah.hn', 'ingeniería en sistemas').
-estudiante('20221000890', 'Lucía Gabriela Varela', 'lucia.varela@unah.hn', 'ingeniería en sistemas').
-estudiante('20241000234', 'Andrés Mauricio Castro', 'andres.castro@unah.hn', 'ingeniería en sistemas').
-estudiante('20211000956', 'Elena Beatriz Flores', 'elena.flores@unah.hn', 'ingeniería en sistemas').
-estudiante('20231000501', 'Juan Pablo Zelaya', 'jpzelaya@unah.hn', 'ingeniería en sistemas').
-estudiante('20231000502', 'Valeria Nicolle Paz', 'vnicolle@unah.hn', 'ingeniería en sistemas').
-estudiante('20221000503', 'Gabriel Alejandro Mejía', 'gabriel.mejia@unah.hn', 'ingeniería en sistemas').
-estudiante('20241000504', 'Camila Alejandra Sosa', 'camila.sosa@unah.hn', 'ingeniería en sistemas').
-estudiante('20211000505', 'Ricardo David Moncada', 'ricardo.moncada@unah.hn', 'ingeniería en sistemas').
-estudiante('20231000506', 'Daniela María Argueta', 'dargueta@unah.hn', 'ingeniería en sistemas').
-estudiante('20221000507', 'Eduardo Josué Bonilla', 'ejbonilla@unah.hn', 'ingeniería en sistemas').
-estudiante('20241000508', 'Sara Victoria Lanza', 'sara.lanza@unah.hn', 'ingeniería en sistemas').
-estudiante('20231000509', 'Fernando José Cruz', 'fcruz@unah.hn', 'ingeniería en sistemas').
-estudiante('20221000510', 'Andrea Michelle Madrid', 'amichelle@unah.hn', 'ingeniería en sistemas').
-estudiante('20231000511', 'Luis Armando Castro', 'lacastro@unah.hn', 'ingeniería en sistemas').
-estudiante('20211000512', 'Paola Alejandra Reyes', 'pareyes@unah.hn', 'ingeniería en sistemas').
-estudiante('20241000513', 'Marco Antonio Pineda', 'mapineda@unah.hn', 'ingeniería en sistemas').
-estudiante('20231000514', 'Gabriela Monserrat Videa', 'gmvidea@unah.hn', 'ingeniería en sistemas').
-estudiante('20221000515', 'Carlos Alberto Fúnez', 'cafunez@unah.hn', 'ingeniería en sistemas').
-estudiante('20231000516', 'Sofía Irene Ordóñez', 'sordonez@unah.hn', 'ingeniería en sistemas').
-estudiante('20241000517', 'Javier Ignacio Matamoros', 'jmatamoros@unah.hn', 'ingeniería en sistemas').
-estudiante('20221000518', 'Beatriz Elena Valladares', 'bvalladares@unah.hn', 'ingeniería en sistemas').
-estudiante('20231000519', 'Héctor Manuel Turcios', 'hturcios@unah.hn', 'ingeniería en sistemas').
+estudiante('20221000759', 'Ivan Alessandro Diaz Villanueva', 'ivan.diaz@unah.hn', 'ingenieria en sistemas').
+estudiante('20221000760', 'Carlos Miguel Hernandez', 'carlos.martinez@unah.hn', 'ingenieria en sistemas').
+estudiante('20221000761', 'Maria Fernanda Antunez', 'maria.macarena@unah.hn', 'ingenieria en sistemas').
+estudiante('20221000762', 'Jose Antonio Salazar', 'jose@unah.hn', 'ingenieria en sistemas').
+estudiante('20211000123', 'Marta Antonieta Carias', 'mcarias@unah.hn', 'ingenieria en sistemas').
+estudiante('20231000112', 'Sofia Alejandra Martinez', 'sofia.martinez@unah.hn', 'ingenieria en sistemas').
+estudiante('20231000445', 'Diego Fernando Ramos', 'diego.ramos@unah.hn', 'ingenieria en sistemas').
+estudiante('20221000890', 'Lucia Gabriela Varela', 'lucia.varela@unah.hn', 'ingenieria en sistemas').
+estudiante('20241000234', 'Andres Mauricio Castro', 'andres.castro@unah.hn', 'ingenieria en sistemas').
+estudiante('20211000956', 'Elena Beatriz Flores', 'elena.flores@unah.hn', 'ingenieria en sistemas').
+estudiante('20231000501', 'Juan Pablo Zelaya', 'jpzelaya@unah.hn', 'ingenieria en sistemas').
+estudiante('20231000502', 'Valeria Nicolle Paz', 'vnicolle@unah.hn', 'ingenieria en sistemas').
+estudiante('20221000503', 'Gabriel Alejandro Mejia', 'gabriel.mejia@unah.hn', 'ingenieria en sistemas').
+estudiante('20241000504', 'Camila Alejandra Sosa', 'camila.sosa@unah.hn', 'ingenieria en sistemas').
+estudiante('20211000505', 'Ricardo David Moncada', 'ricardo.moncada@unah.hn', 'ingenieria en sistemas').
+estudiante('20231000506', 'Daniela Maria Argueta', 'dargueta@unah.hn', 'ingenieria en sistemas').
+estudiante('20221000507', 'Eduardo Josue Bonilla', 'ejbonilla@unah.hn', 'ingenieria en sistemas').
+estudiante('20241000508', 'Sara Victoria Lanza', 'sara.lanza@unah.hn', 'ingenieria en sistemas').
+estudiante('20231000509', 'Fernando Jose Cruz', 'fcruz@unah.hn', 'ingenieria en sistemas').
+estudiante('20221000510', 'Andrea Michelle Madrid', 'amichelle@unah.hn', 'ingenieria en sistemas').
+estudiante('20231000511', 'Luis Armando Castro', 'lacastro@unah.hn', 'ingenieria en sistemas').
+estudiante('20211000512', 'Paola Alejandra Reyes', 'pareyes@unah.hn', 'ingenieria en sistemas').
+estudiante('20241000513', 'Marco Antonio Pineda', 'mapineda@unah.hn', 'ingenieria en sistemas').
+estudiante('20231000514', 'Gabriela Monserrat Videa', 'gmvidea@unah.hn', 'ingenieria en sistemas').
+estudiante('20221000515', 'Carlos Alberto Funez', 'cafunez@unah.hn', 'ingenieria en sistemas').
+estudiante('20231000516', 'Sofia Irene Ordonez', 'sordonez@unah.hn', 'ingenieria en sistemas').
+estudiante('20241000517', 'Javier Ignacio Matamoros', 'jmatamoros@unah.hn', 'ingenieria en sistemas').
+estudiante('20221000518', 'Beatriz Elena Valladares', 'bvalladares@unah.hn', 'ingenieria en sistemas').
+estudiante('20231000519', 'Hector Manuel Turcios', 'hturcios@unah.hn', 'ingenieria en sistemas').
 
 /*
     HECHOS: Profesores, estan conformados por un código de profesor, su nombre y correo.
@@ -47,15 +46,15 @@ estudiante('20231000519', 'Héctor Manuel Turcios', 'hturcios@unah.hn', 'ingenie
 */
 profesor('0001', 'Miguel Angel Rodas', 'miguel.rodas@unah.hn').
 profesor('0002', 'Juan Andres Ceballos', 'juan.ceballos@unah.hn').
-profesor('0003', 'Mario José Gutierrez', 'mario.gutierrez@unah.hn').
-profesor('0004', 'Ana Lucía Zelaya', 'ana.zelaya@unah.hn').
-profesor('0005', 'Carlos Roberto Martínez', 'carlos.martinez@unah.hn').
-profesor('0006', 'Elena María Castro', 'elena.castro@unah.hn').
-profesor('0007', 'Ricardo Javier Mejía', 'ricardo.mejia@unah.hn').
-profesor('0008', 'Sofía Alejandra Paz', 'sofia.paz@unah.hn').
+profesor('0003', 'Mario Jose Gutierrez', 'mario.gutierrez@unah.hn').
+profesor('0004', 'Ana Lucia Zelaya', 'ana.zelaya@unah.hn').
+profesor('0005', 'Carlos Roberto Martinez', 'carlos.martinez@unah.hn').
+profesor('0006', 'Elena Maria Castro', 'elena.castro@unah.hn').
+profesor('0007', 'Ricardo Javier Mejia', 'ricardo.mejia@unah.hn').
+profesor('0008', 'Sofia Alejandra Paz', 'sofia.paz@unah.hn').
 profesor('0009', 'Diego Armando Flores', 'diego.flores@unah.hn').
 profesor('0010', 'Valeria Gabriela Sosa', 'valeria.sosa@unah.hn').
-profesor('0011', 'Eduardo Josué Varela', 'eduardo.varela@unah.hn').
+profesor('0011', 'Eduardo Josue Varela', 'eduardo.varela@unah.hn').
 profesor('0012', 'Daniela Irene Argueta', 'daniela.argueta@unah.hn').
 profesor('0013', 'Marco Antonio Bonilla', 'marco.bonilla@unah.hn').
 profesor('0014', 'Sara Victoria Lanza', 'sara.lanza@unah.hn').
@@ -239,7 +238,7 @@ seccion('ISC506-1900', 'ISC-506', '1900', '0009', 'A109', 'B2').
     @date 2026-07-18
     @since 2026-07-17
 */
-laboratorio('0701', 'fs200', 'E1', 'Laboratorio de Física').
+laboratorio('0701', 'fs200', 'E1', 'Laboratorio de Fisica').
 
 /*
     HECHO: Materias aprobadas por estudiantes, estan conformados por un número de cuenta y código de materia.
@@ -321,5 +320,3 @@ clase_impartida('ISC-336', '0013', '1PAC', '2026').
 clase_impartida('ISC-407', '0014', '1PAC', '2026').
 clase_impartida('ISC-408', '0014', '2PAC', '2026').
 clase_impartida('ISC-414', '0014', '2PAC', '2026').
-
-

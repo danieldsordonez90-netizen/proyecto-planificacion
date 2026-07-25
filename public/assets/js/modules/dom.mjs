@@ -4,6 +4,7 @@ import { columns } from './dom-columns.mjs';
 import { button, buttonDemoMessage } from './dom-events.mjs';
 import { dialog } from './dom-dialog.mjs';
 import { fetchJSON } from './dom-fetch.mjs';
+import { initTheme, themeToggleButton } from './dom-theme.mjs';
 
 let rootElement = null;
 
@@ -35,5 +36,5 @@ export {
     h, p, b, li, ul, ol, tag,
     box, columns,
     button, buttonDemoMessage,
-    dialog, fetchJSON
+    dialog, fetchJSON, initTheme, themeToggleButton
 };
