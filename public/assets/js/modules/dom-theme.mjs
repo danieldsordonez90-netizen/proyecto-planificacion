@@ -71,12 +71,12 @@ const alternarClaseTema = (tema) => {
 };
 
 const obtenerTemaBackend = async () => {
-    const data = await fetchJSON('/public/api/preferencias.php?action=get');
+    const data = await fetchJSON('/api/preferencias.php?action=get');
     return data && data.theme ? data.theme : 'light';
 };
 
 const guardarTemaBackend = async (tema) => {
-    await fetchJSON(`/public/api/preferencias.php?action=save&theme=${tema}`);
+    await fetchJSON(`/api/preferencias.php?action=save&theme=${tema}`);
 };
 
 export const initTheme = async () => {
