@@ -423,6 +423,19 @@ async function mostrarModalIndicesPorClase(codigoMateria, nombreMateria) {
     modalIndices.querySelector("div").innerHTML = contenidoHTML;
 }
 
+async function limpiarModeloDeDatos() {
+    const confirmado = confirm("Seguro que desea limpiar el modelo de datos?")
+    if (!confirmado) return;
+
+    const resultado = await fetchJSON('./api/limpiarProlog.php');
+
+    if (resultado && resultado.status === "ok") {
+        alert("Modelo de datos limpiado. Respaldo creado: " + resultado.backup);
+    } else {
+        alert("Ocurrio un error al limpiar el modelo de datos.");
+    }
+}
+
 const btnCargarProlog = button("Consultar Base de Conocimiento", () => {
     const cuadroExistente = document.getElementById("caja-opciones");
 
@@ -461,6 +474,9 @@ const btnCargarProlog = button("Consultar Base de Conocimiento", () => {
     nuevoCuadroNode.appendChild(contenedorBotones);
     elementoColIzq.appendChild(nuevoCuadroNode);
 });
+
+const btnLimpiar = button("Limpiar Modelo De Datos", limpiarModeloDeDatos);
+document.getElementById('caja-acciones').appendChild(btnLimpiar);
 
 const modalBase = dialog("modal-aviso", "Estado de la Consulta", p("La petición ha sido procesada con éxito."));
 
