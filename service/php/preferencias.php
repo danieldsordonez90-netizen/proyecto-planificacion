@@ -1,4 +1,6 @@
 <?php
+
+
 $jsonFile = __DIR__ . '/preferencias.json';
 
 if ($action === 'save' && $theme !== null) {

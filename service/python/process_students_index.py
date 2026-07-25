@@ -5,11 +5,14 @@
 import sys
 
 keys = [
-    "estudiante_indice"
+    "codigo",
+    "nombre",
+    "indice"
 ]
 
 read_data = lambda: [line for line in str(sys.stdin.read()).strip().split("\n") if line.strip()]
-process_item = lambda text: str(text).strip().split(",")
+
+process_item = lambda text: [str(item).strip().strip("'") for item in str(text).strip().split(",")]
 
 process_data = lambda array, keys: [
     {

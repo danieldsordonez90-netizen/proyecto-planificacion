@@ -174,59 +174,45 @@ seccion('ISC302-1600', 'ISC-302', '1600', '0008', 'A102', 'B2').
 seccion('ISC303-0900', 'ISC-303', '0900', '0008', 'A108', 'B2').
 seccion('ISC303-1400', 'ISC-303', '1400', '0005', 'A102', 'B2').
 seccion('ISC303-1700', 'ISC-303', '1700', '0008', 'A103', 'B2').
-
 seccion('ISC304-1000', 'ISC-304', '1000', '0006', 'A106', 'B2').
 seccion('ISC304-1300', 'ISC-304', '1300', '0008', 'A103', 'B2').
 seccion('ISC304-1800', 'ISC-304', '1800', '0005', 'A105', 'B2').
-
 seccion('ISC305-0900', 'ISC-305', '0900', '0002', 'A102', 'B2').
 seccion('ISC305-1400', 'ISC-305', '1400', '0004', 'A104', 'B2').
 seccion('ISC305-1900', 'ISC-305', '1900', '0008', 'A108', 'B2').
-
 seccion('ISC401-1000', 'ISC-401', '1000', '0009', 'A109', 'B2').
 seccion('ISC401-1400', 'ISC-401', '1400', '0006', 'A108', 'B2').
 seccion('ISC401-1800', 'ISC-401', '1800', '0009', 'A101', 'B2').
-
 seccion('ISC402-0900', 'ISC-402', '0900', '0010', 'A110', 'B2').
 seccion('ISC402-1200', 'ISC-402', '1200', '0010', 'A110', 'B2').
 seccion('ISC402-1600', 'ISC-402', '1600', '0006', 'A109', 'B2').
-
 seccion('ISC403-1100', 'ISC-403', '1100', '0008', 'A107', 'B2').
 seccion('ISC403-1300', 'ISC-403', '1300', '0009', 'A109', 'B2').
 seccion('ISC403-1700', 'ISC-403', '1700', '0010', 'A110', 'B2').
-
 seccion('ISC404-0800', 'ISC-404', '0800', '0004', 'A104', 'B2').
 seccion('ISC404-1200', 'ISC-404', '1200', '0002', 'A102', 'B2').
 seccion('ISC404-1900', 'ISC-404', '1900', '0001', 'A101', 'B2').
-
 seccion('ISC405-1000', 'ISC-405', '1000', '0001', 'A101', 'B2').
 seccion('ISC405-1500', 'ISC-405', '1500', '0003', 'A103', 'B2').
 seccion('ISC405-1800', 'ISC-405', '1800', '0008', 'A108', 'B2').
-
 seccion('ISC406-0700', 'ISC-406', '0700', '0009', 'A109', 'B2').
 seccion('ISC406-1100', 'ISC-406', '1100', '0012', 'A102', 'B2').
 seccion('ISC406-1600', 'ISC-406', '1600', '0007', 'A107', 'B2').
-
 seccion('ISC501-0700', 'ISC-501', '0700', '0010', 'A110', 'B2').
 seccion('ISC501-1200', 'ISC-501', '1200', '0005', 'A105', 'B2').
 seccion('ISC501-1600', 'ISC-501', '1600', '0005', 'A104', 'B2').
-
 seccion('ISC502-0800', 'ISC-502', '0800', '0009', 'A109', 'B2').
 seccion('ISC502-1300', 'ISC-502', '1300', '0011', 'A110', 'B2').
 seccion('ISC502-1800', 'ISC-502', '1800', '0011', 'A102', 'B2').
-
 seccion('ISC503-0900', 'ISC-503', '0900', '0007', 'A107', 'B2').
 seccion('ISC503-1500', 'ISC-503', '1500', '0010', 'A110', 'B2').
 seccion('ISC503-1700', 'ISC-503', '1700', '0009', 'A109', 'B2').
-
 seccion('ISC504-1100', 'ISC-504', '1100', '0004', 'A104', 'B2').
 seccion('ISC504-1500', 'ISC-504', '1500', '0002', 'A102', 'B2').
 seccion('ISC504-1900', 'ISC-504', '1900', '0013', 'A103', 'B2').
-
 seccion('ISC505-1000', 'ISC-505', '1000', '0007', 'A107', 'B2').
 seccion('ISC505-1400', 'ISC-505', '1400', '0010', 'A110', 'B2').
 seccion('ISC505-2000', 'ISC-505', '2000', '0006', 'A106', 'B2').
-
 seccion('ISC506-0700', 'ISC-506', '0700', '0005', 'A105', 'B2').
 seccion('ISC506-1300', 'ISC-506', '1300', '0006', 'A106', 'B2').
 seccion('ISC506-1900', 'ISC-506', '1900', '0009', 'A109', 'B2').
@@ -299,21 +285,21 @@ clase_cursada('20231000516', 'ISC-201', 90, '1PAC', '2026').
 clase_cursada('20231000516', 'ISC-305', 92, '1PAC', '2026').
 
 clase_impartida('ISC-101', '0001', '1PAC', '2025').
-clase_impartida('ISC-102', '0001', '2PAC', '2025').
-clase_impartida('ISC-204', '0001', '1PAC', '2026').
-clase_impartida('ISC-103', '0007', '1PAC', '2025').
-clase_impartida('ISC-211', '0007', '2PAC', '2025').
-clase_impartida('ISC-321', '0010', '1PAC', '2026').
-clase_impartida('ISC-305', '0010', '2PAC', '2026').
-clase_impartida('ISC-351', '0010', '1PAC', '2026').
+clase_impartida('ISC-102', '0002', '2PAC', '2025').
+clase_impartida('ISC-204', '0003', '1PAC', '2026').
+clase_impartida('ISC-103', '0004', '1PAC', '2025').
+clase_impartida('ISC-211', '0001', '2PAC', '2025').
+clase_impartida('ISC-321', '0001', '1PAC', '2026').
+clase_impartida('ISC-305', '0006', '2PAC', '2026').
+clase_impartida('ISC-351', '0009', '1PAC', '2026').
 clase_impartida('ISC-331', '0011', '1PAC', '2026').
-clase_impartida('ISC-332', '0011', '2PAC', '2026').
-clase_impartida('ISC-312', '0011', '1PAC', '2026').
+clase_impartida('ISC-332', '0005', '2PAC', '2026').
+clase_impartida('ISC-312', '0005', '1PAC', '2026').
 clase_impartida('ISC-333', '0012', '1PAC', '2026').
-clase_impartida('ISC-334', '0012', '2PAC', '2026').
-clase_impartida('ISC-313', '0012', '2PAC', '2026').
-clase_impartida('ISC-341', '0013', '1PAC', '2026').
-clase_impartida('ISC-306', '0013', '2PAC', '2026').
+clase_impartida('ISC-334', '0013', '2PAC', '2026').
+clase_impartida('ISC-313', '0015', '2PAC', '2026').
+clase_impartida('ISC-341', '0008', '1PAC', '2026').
+clase_impartida('ISC-306', '0003', '2PAC', '2026').
 clase_impartida('ISC-336', '0013', '1PAC', '2026').
 clase_impartida('ISC-407', '0014', '1PAC', '2026').
 clase_impartida('ISC-408', '0014', '2PAC', '2026').
