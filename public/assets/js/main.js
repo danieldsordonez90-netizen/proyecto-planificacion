@@ -1,3 +1,9 @@
+/*
+Author: jose.inestroza@unah.edu.hn, danields.olivares@unah.hn, christian.vijil@unah.hn, ivan.diaz@unah.hn
+Version: 0.1.8
+Date: 2026/07/18
+*/  
+
 import {
     init, print, printAsAppend,
     h, p, box, columns,

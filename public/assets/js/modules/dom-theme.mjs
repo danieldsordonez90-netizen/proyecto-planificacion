@@ -1,7 +1,12 @@
+/*
+ author jose.inestroza@unah.edu.hn, danields.olivares@unah.hn
+ version 0.1.0
+ date 2026/07/20
+ */
+
 import { fetchJSON } from './dom-fetch.mjs';
 import { button } from './dom-events.mjs';
 
-// Fuente: https://developer.mozilla.org/es/docs/Web/API/Document/createElement
 const inyectarEstilosTema = () => {
     const estilo = document.createElement('style');
     estilo.textContent = `
@@ -61,7 +66,6 @@ const inyectarEstilosTema = () => {
     document.head.appendChild(estilo);
 };
 
-// Fuente: https://developer.mozilla.org/es/docs/Web/API/Element/classList
 const alternarClaseTema = (tema) => {
     if (tema === 'dark') {
         document.body.classList.add('dark-theme');
@@ -87,14 +91,12 @@ export const initTheme = async () => {
 
 export const themeToggleButton = () => {
     const btn = button("Cambiar Tema", async () => {
-        // Fuente: https://developer.mozilla.org/es/docs/Web/API/Element/classList
         const esOscuro = document.body.classList.contains('dark-theme');
         const nuevoTema = esOscuro ? 'light' : 'dark';
         
         alternarClaseTema(nuevoTema);
         await guardarTemaBackend(nuevoTema);
     });
-    // Fuente: https://developer.mozilla.org/es/docs/Web/API/Element/classList
     btn.classList.add('btn-tema');
     return btn;
 };
