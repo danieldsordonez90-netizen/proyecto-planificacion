@@ -1,6 +1,8 @@
 # Author: jose.inestroza@unah.edu.hn
 # Modified by: ivan.diaz@unah.hn, danields.olivares@unah.hn, christian.vijil@unah.hn
-# Version: 0.1.0
+# Version: 0.1.1
+# Date: 2026/07/23
+# Since: 2026/07/22
 
 import sys
 

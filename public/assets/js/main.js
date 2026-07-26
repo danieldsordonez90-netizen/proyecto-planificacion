@@ -507,13 +507,18 @@ const contenidoAcercaDe = box(
     "cuerpo-acerca-de"
 );
 
+/**
+ * author ivan.diaz@unah.hn
+ * version 0.1.1
+ * date 2026/07/25
+ * 
+ */
 const modalAcercaDe = dialog(
     "modal-acerca-de", 
     "Acerca del Proyecto: Sistema de Planificación Académica", 
     contenidoAcercaDe
 );
 
-// Ajustar restricciones de tamaño para que el modal sea scrolleable y no cubra toda la ventana
 const divInternoModal = modalAcercaDe.querySelector("div") || modalAcercaDe;
 divInternoModal.style.maxWidth = "700px";
 divInternoModal.style.width = "90%";
