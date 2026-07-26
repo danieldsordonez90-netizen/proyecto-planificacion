@@ -63,6 +63,34 @@ clases_cursadas_de_estudiante(Cuenta, ListaClases) :-
         ListaClases
     ).
 
+obtener_clases_estudiante(Cuenta) :-
+    clases_cursadas_de_estudiante(Cuenta, ListaClases),
+    imprimir_lista_materias(ListaClases).
+
+imprimir_lista_materias([]).
+imprimir_lista_materias([materia(Cod, Nombre, Calificacion)|Cola]) :-
+    format('~w,~w,~w~n', [Cod, Nombre, Calificacion]),
+    imprimir_lista_materias(Cola).
+
+clases_impartidas_por_profesor(CodProfesor, ListaClases) :-
+    findall(
+        materia(CodMateria, NombreMateria, Periodo, Anio),
+        (
+            clase_impartida(CodMateria, CodProfesor, Periodo, Anio),
+            materia(CodMateria, NombreMateria, _, _)
+        ),
+        ListaClases
+    ).
+
+obtener_clases_profesor(CodProfesor) :-
+    clases_impartidas_por_profesor(CodProfesor, ListaClases),
+    imprimir_clases_profesor(ListaClases).
+
+imprimir_clases_profesor([]).
+imprimir_clases_profesor([materia(Cod, Nombre, Periodo, Anio)|Cola]) :-
+    format('~w, ~w, ~w, ~w~n', [Cod, Nombre, Periodo, Anio]),
+    imprimir_clases_profesor(Cola).
+
 nota_maxima_materia(CodMateria, NotaMax) :-
     findall(Nota, clase_cursada(_, CodMateria, Nota, _, _), Notas),
     Notas \= [],
@@ -72,18 +100,6 @@ mejor_estudiante_materia(CodMateria, Cuenta, Nombre, NotaMax) :-
     nota_maxima_materia(CodMateria, NotaMax),
     clase_cursada(Cuenta, CodMateria, NotaMax, _, _),
     estudiante(Cuenta, Nombre, _, _).
-
-historial_estudiante(Cuenta, Historial) :-
-    findall(
-        registro(CodMateria, NombreMateria, Calificacion, Estado, Periodo, Anio),
-        (
-            clase_cursada(Cuenta, CodMateria, Calificacion, Periodo, Anio),
-            materia(CodMateria, NombreMateria, _, _),
-            (Calificacion >= 65 -> Estado = 'Aprobada' ; Estado = 'Reprobada')
-        ),
-        Historial
-    ).
-
 
 secciones_colisionan_dept(Sec1, Sec2) :-
     seccion(Sec1, _, Hora, Docente1, Aula1, _),
@@ -150,8 +166,8 @@ imprimir_4_planes :-
         (writeln('--------------------------------------------------'), writeln(Plan))
     ).
 
+%------------------------------------------------------------
 
-% Calcula la suma ponderada (Nota * UV) y el total de UV de un estudiante
 sumatoria_ponderada(Estudiante, SumaPonderada, TotalUV) :-
     findall(
         Ponderacion,
@@ -173,31 +189,85 @@ sumatoria_ponderada(Estudiante, SumaPonderada, TotalUV) :-
     sum_list(ListaPonderaciones, SumaPonderada),
     sum_list(ListaUVs, TotalUV).
 
-% Regla principal para obtener el índice global de un estudiante con redondeo a 2 decimales
 indice_global(Estudiante, IndiceFinal) :-
     sumatoria_ponderada(Estudiante, SumaPonderada, TotalUV),
-    TotalUV > 0, % Evita división por cero
+    TotalUV > 0, 
     IndiceUnico is SumaPonderada / TotalUV,
     IndiceFinal is round(IndiceUnico * 100) / 100.
 
-mejor_estudiante_carrera(Cuenta, Nombre, PromedioMax) :-
-    findall(
-        C-Prom, (estudiante(C, _, _, _), indice_global(C, Prom)), Promedios
-    ),
-    Promedios \= [],
-    findall(P, member(_-P, Promedios), ListaPromedios),
-    max_list(ListaPromedios, PromedioMax),
-    member(Cuenta-PromedioMax, Promedios),
-    estudiante(Cuenta, Nombre, _, _).
+obtener_indice_estudiante(Cuenta) :-
+    indice_global(Cuenta, Indice),
+    format('~w~n', [Indice]).
 
-% Regla corregida para contadores globales
+% Obtiene la lista de los mejores índices globales ordenados
+mejores_indices_globales(ListaTop) :-
+    findall(
+        indice_est(IndiceFinal, Cuenta, Nombre),
+        (
+            estudiante(Cuenta, Nombre, _, _),
+            indice_global(Cuenta, IndiceFinal)
+        ),
+        ListaIncompleta
+    ),
+    sort(ListaIncompleta, ListaUnica), % Opcional para evitar duplicados exactos
+    predsort(comparar_indices, ListaUnica, ListaOrdenada),
+    tomar_primeros(10, ListaOrdenada, ListaTop).
+
+% Criterio de comparación para ordenar de mayor a menor índice
+comparar_indices(Order, indice_est(Indice1, _, _), indice_est(Indice2, _, _)) :-
+    compare(Order, Indice2, Indice1).
+
+% Predicado de salida para imprimir en consola/PHP
+obtener_mejores_globales :-
+    mejores_indices_globales(ListaTop),
+    imprimir_mejores_globales(ListaTop).
+
+imprimir_mejores_globales([]).
+imprimir_mejores_globales([indice_est(Indice, Cuenta, Nombre)|Cola]) :-
+    format('~w, ~w, ~w~n', [Cuenta, Nombre, Indice]),
+    imprimir_mejores_globales(Cola).
+
+%------------------------------------------------------------
+
+comparar_notas(Order, nota(Nota1, _, _), nota(Nota2, _, _)) :-
+    compare(Order, Nota2, Nota1).
+
+mejores_estudiantes_por_clase(CodMateria, ListaTop) :-
+    findall(
+        nota(Calificacion, Cuenta, NombreEstudiante),
+        (
+            clase_cursada(Cuenta, CodMateria, Calificacion, _, _),
+            Calificacion > 80,
+            estudiante(Cuenta, NombreEstudiante, _, _)
+        ),
+        ListaConDuplicados
+    ),
+    sort(ListaConDuplicados, ListaUnica),
+    predsort(comparar_notas, ListaUnica, ListaOrdenada),
+    tomar_primeros(10, ListaOrdenada, ListaTop).
+
+tomar_primeros(0, _, []).
+tomar_primeros(_, [], []).
+tomar_primeros(N, [H|T], [H|Resto]) :-
+    N > 0,
+    N1 is N - 1,
+    tomar_primeros(N1, T, Resto).
+
+obtener_mejores_indices_clase(CodMateria) :-
+    mejores_estudiantes_por_clase(CodMateria, ListaTop),
+    imprimir_mejores_clase(ListaTop).
+
+imprimir_mejores_clase([]).
+imprimir_mejores_clase([nota(Calificacion, Cuenta, Nombre)|Cola]) :-
+    format('~w, ~w, ~w~n', [Cuenta, Nombre, Calificacion]),
+    imprimir_mejores_clase(Cola).
+
 contadores_globales(TotalAlumnos, TotalProfesores, TotalAsignaturas, TotalSecciones) :-
     findall(A, estudiante(A, _, _, _), ListA), length(ListA, TotalAlumnos),
     findall(P, profesor(P, _, _), ListP), length(ListP, TotalProfesores),
     findall(M, materia(M, _, _, _), ListM), length(ListM, TotalAsignaturas),
     findall(S, seccion(S, _, _, _, _, _), ListS), length(ListS, TotalSecciones).
 
-% Regla corregida para distribución de notas calculando dinámicamente el índice
 distribucion_notas(Sobresaliente, Regular, Bajo) :-
     findall(I, (estudiante(Cuenta, _, _, _), indice_global(Cuenta, I), I >= 80, I =< 100), ListaS), length(ListaS, Sobresaliente),
     findall(I, (estudiante(Cuenta, _, _, _), indice_global(Cuenta, I), I >= 65, I < 80), ListaR), length(ListaR, Regular),
