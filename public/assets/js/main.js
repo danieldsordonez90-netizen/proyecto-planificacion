@@ -450,7 +450,9 @@ document.getElementById('caja-acciones').appendChild(btnCargarProlog);
 document.getElementById('caja-acciones').appendChild(statsButton('Mostrar Indicadores'));
 
 const contenidoAcercaDe = box(
+    h(1, "Proyecto Final: Sistema de Planificacion Academica.") +
     h(2, "1. Introducción y objetivo del sistema") +
+    p("Clase: Paradigmas de Programacion ISC-201.") +
     p("Se plantea el desarrollo de un sistema de planificación académica que permita en este caso al director académico o jefe de departamento gestionar las asignaturas, prerrequisitos, profesores asignados y estudiantes matriculados en cada asignatura, junto a las secciones disponibles y el cual dispone de un generador de horarios que genera por lo menos 4 horarios óptimos sin colisiones para así evitar la deserción estudiantil.") +
     p("Para el desarrollo de este sistema se utilizan los lenguajes PHP y JS como núcleo del sistema, Prolog como base de conocimiento para manejar la información y Python como lenguaje auxiliar escogido por el equipo.") +
     p("La información que se maneja dentro del sistema se hace de manera manual, el programa no cuenta con ningún formulario que permita añadir información a la base de conocimientos en PROLOG, todo lo que se necesite agregar o modificar, se hará directamente en el archivo llamado \"db.pl\" del sistema.") +
@@ -497,7 +499,10 @@ const contenidoAcercaDe = box(
     p("Para la estructura del proyecto se utilizará el siguiente árbol de carpetas, y para poder acceder a los distintos archivos de cada una de las carpetas, se utilizará la función __DIR__ en lugar de rutas absolutas.") +
     
     h(2, "9. Módulo de estadísticas e indicadores de gestión") +
-    p("La SPA 1 incorporará una sección de estadísticas generales para el jefe de departamento que mostrará contadores con el total de alumnos matriculados, profesores asignados, asignaturas y secciones creadas. También incluirá un diagrama circular que permite visualizar el promedio de notas de los estudiantes de la carrera, reflejando de forma visual el porcentaje de cuantos poseen un índice sobresaliente (80-100%), un índice regular (65-79%) y un índice bajo (0-65%)."),
+    p("La SPA 1 incorporará una sección de estadísticas generales para el jefe de departamento que mostrará contadores con el total de alumnos matriculados, profesores asignados, asignaturas y secciones creadas. También incluirá un diagrama circular que permite visualizar el promedio de notas de los estudiantes de la carrera, reflejando de forma visual el porcentaje de cuantos poseen un índice sobresaliente (80-100%), un índice regular (65-79%) y un índice bajo (0-65%).")+
+    
+    h(4, "Integrantes:") +
+    p("IVAN ALESSANDRO DIAZ VILLANUEVA,  DANIELDS ODEL OLIVARES ORDOÑEZ, CHRISTIAN EDUARDO VIJIL HERNANDEZ"),
     "",
     "cuerpo-acerca-de"
 );
