@@ -44,7 +44,6 @@ estudiante('20231000519', 'Hector Manuel Turcios', 'hturcios@unah.hn', 'ingenier
     @since 2026-07-16
     @version 0.1.1
 */
-<<<<<<< HEAD
 profesor('0001', 'Miguel Angel Rodas', 'miguel.rodas@unah.hn').
 profesor('0002', 'Juan Andres Ceballos', 'juan.ceballos@unah.hn').
 profesor('0003', 'Mario Jose Gutierrez', 'mario.gutierrez@unah.hn').
@@ -59,22 +58,6 @@ profesor('0011', 'Eduardo Josue Varela', 'eduardo.varela@unah.hn').
 profesor('0012', 'Daniela Irene Argueta', 'daniela.argueta@unah.hn').
 profesor('0013', 'Marco Antonio Bonilla', 'marco.bonilla@unah.hn').
 profesor('0014', 'Sara Victoria Lanza', 'sara.lanza@unah.hn').
-=======
-profesor('0001', 'Miguel Angel Rodas', 'miguel.rodas@unah.edu.hn').
-profesor('0002', 'Juan Andres Ceballos', 'juan.ceballos@unah.edu.hn').
-profesor('0003', 'Mario Jose Gutierrez', 'mario.gutierrez@unah.edu.hn').
-profesor('0004', 'Ana Lucia Zelaya', 'ana.zelaya@unah.edu.hn').
-profesor('0005', 'Carlos Roberto Martinez', 'carlos.martinez@unah.edu.hn').
-profesor('0006', 'Elena Maria Castro', 'elena.castro@unah.edu.hn').
-profesor('0007', 'Ricardo Javier Mejia', 'ricardo.mejia@unah.edu.hn').
-profesor('0008', 'Sofia Alejandra Paz', 'sofia.paz@unah.edu.hn').
-profesor('0009', 'Diego Armando Flores', 'diego.flores@unah.edu.hn').
-profesor('0010', 'Valeria Gabriela Sosa', 'valeria.sosa@unah.edu.hn').
-profesor('0011', 'Eduardo Josue Varela', 'eduardo.varela@unah.edu.hn').
-profesor('0012', 'Daniela Irene Argueta', 'daniela.argueta@unah.edu.hn').
-profesor('0013', 'Marco Antonio Bonilla', 'marco.bonilla@unah.edu.hn').
-profesor('0014', 'Sara Victoria Lanza', 'sara.lanza@unah.edu.hn').
->>>>>>> de9836507a4318cbfc2db55ad31e760fc7fb610e
 
 /*
     HECHO: Materia, estan conformados por un código de materia, su nombre, cantidad de créditos y sus prerrequisitos.
@@ -320,8 +303,4 @@ clase_impartida('ISC-306', '0003', '2PAC', '2026').
 clase_impartida('ISC-336', '0013', '1PAC', '2026').
 clase_impartida('ISC-407', '0014', '1PAC', '2026').
 clase_impartida('ISC-408', '0014', '2PAC', '2026').
-<<<<<<< HEAD
 clase_impartida('ISC-414', '0014', '2PAC', '2026').
-=======
-clase_impartida('ISC-414', '0014', '2PAC', '2026').
->>>>>>> de9836507a4318cbfc2db55ad31e760fc7fb610e
