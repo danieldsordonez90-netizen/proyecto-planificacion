@@ -1,3 +1,9 @@
+/**
+ * author jose.inestroza@unah.edu.hn, christian.vijil@unah.hn
+ * version 0.1.2
+ * date 2026/07/25
+ */
+
 import { init, print, printAsAppend, h, p, box, fetchJSON, button, initTheme, themeToggleButton } from '../assets/js/modules/dom.mjs';
 
 init('body');

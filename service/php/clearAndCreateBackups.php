@@ -1,8 +1,8 @@
 <?php
 /**
- * Author: jose.inestroza@unah.edu.hn
- * Modified by: ivan.diaz@unah.hn, danields.olivares@unah.hn, christian.vijil@unah.hn
- * Version: 0.1.0
+ * Author: jose.inestroza@unah.edu.hn, christian.vijil@unah.hn
+ * Version: 0.1.1
+ * date 2026/07/25
  */
 $createBackup = function() {
     $backupContent = file_get_contents(__DIR__ . "/../../data-model/db.pl");

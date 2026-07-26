@@ -1,4 +1,9 @@
 <?php
+/**
+ * Author: jose.inestroza@unah.edu.hn, christian.vijil@unah.hn
+ * Version: 0.1.1
+ * date 2026/07/25
+ */
 
 $getHorarios = fn() => 
     shell_exec(

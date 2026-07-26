@@ -1,3 +1,8 @@
+# # Author: jose.inestroza@unah.edu.hn, christian.vijil@unah.hn
+# Version: 0.1.0
+# Date: 2026/07/25
+# Since: 2026/07/25
+
 import sys
 lines = [line for line in sys.stdin.read().strip().split("\n") if line.strip()]
 
