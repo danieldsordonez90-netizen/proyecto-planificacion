@@ -526,6 +526,26 @@ const btnAcercaDe = button("Acerca de", () => {
 });
 document.getElementById('caja-acciones').appendChild(btnAcercaDe);
 
+const btnAyuda = button("Ayuda", () => {
+    const cajaExistente = document.getElementById("caja-ayuda-texto");
+    if (cajaExistente) {
+        cajaExistente.remove();
+        return;
+    }
+    const contenidoAyuda = box(
+        "<strong>Tutorial Rápido:</strong><br>" +
+        "- Ver profesores: Muestra docentes y alumnos a cargo.<br>" +
+        "- Ver secciones: Detalla horarios y aulas.<br>" +
+        "- Ver clases: Lista materias y requisitos.<br>" +
+        "- Ver estudiantes: Lista de matriculados.<br>" +
+        "- Ver Estadísticas: Muestra contadores y gráfico.",
+        "#a3eaff",
+        "caja-ayuda-texto"
+    );
+    printAsAppend(contenidoAyuda);
+});
+printAsAppend(btnAyuda);
+
 printAsAppend(modalBase);
 printAsAppend(themeToggleButton());
 
