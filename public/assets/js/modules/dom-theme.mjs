@@ -53,9 +53,9 @@ const inyectarEstilosTema = () => {
         body.dark-theme .box, 
         body.dark-theme .card, 
         body.dark-theme dialog {
-            background-color: #1e1e1e;
-            border-color: #333333;
-            color: #e0e0e0;
+            background-color: #4e6615 !important;
+            border-color: #333333 !important;
+            color: #e0e0e0 !important;
         }
     `;
     document.head.appendChild(estilo);

@@ -494,3 +494,8 @@ const iniciarEstadisticasModal = async () => {
     printAsAppend(statsModalHTML);
 };
 iniciarEstadisticasModal();
+
+const btnVerPlanes = button("Ver Planificaciones (4 Horarios)", () => {
+    window.location.href = "./spa2/index.html";
+});
+document.getElementById('caja-acciones').appendChild(btnVerPlanes);

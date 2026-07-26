@@ -202,3 +202,13 @@ distribucion_notas(Sobresaliente, Regular, Bajo) :-
     findall(I, (estudiante(Cuenta, _, _, _), indice_global(Cuenta, I), I >= 80, I =< 100), ListaS), length(ListaS, Sobresaliente),
     findall(I, (estudiante(Cuenta, _, _, _), indice_global(Cuenta, I), I >= 65, I < 80), ListaR), length(ListaR, Regular),
     findall(I, (estudiante(Cuenta, _, _, _), indice_global(Cuenta, I), I >= 0, I < 65), ListaB), length(ListaB, Bajo).
+
+planes_json :-
+    generar_4_planes_estudio(Planes),
+    forall(
+        nth1(N, Planes, Plan),
+        (
+            atomic_list_concat(Plan, ',', PlanStr),
+            format('~w|~w~n', [N, PlanStr])
+        )
+    ).
