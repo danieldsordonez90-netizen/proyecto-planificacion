@@ -1,3 +1,9 @@
+/*
+ author jose.inestroza@unah.edu.hn, danields.olivares@unah.hn
+ version 0.1.3
+ date 2026/07/24
+ */
+
 import { h, p } from './dom-basic-html.mjs';
 import { box } from './dom-box.mjs';
 import { dialog } from './dom-dialog.mjs';
@@ -19,8 +25,6 @@ const renderChart = (data) => {
         { value: b, color: '#f44336', label: 'Bajo (0-65%)' }
     ];
 
-    // Fuente Flexbox: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
-    // Fuente CSS Width: https://developer.mozilla.org/en-US/docs/Web/CSS/width
     const barsHTML = bands.map(band => {
         const percent = total > 0 ? ((band.value / total) * 100).toFixed(1) : 0;
         

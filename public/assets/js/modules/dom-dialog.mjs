@@ -1,3 +1,9 @@
+/*
+ author jose.inestroza@unah.edu.hn, danields.olivares@unah.hn
+ version 0.1.0
+ date 2026/07/18
+ */
+
 export const dialog = (id, title, htmlContent) => {
     const d = document.createElement("dialog");
     d.id = id;
@@ -5,7 +11,6 @@ export const dialog = (id, title, htmlContent) => {
     d.style.border = "1px solid #ccc";
     d.style.padding = "20px";
     
-    // El "method='dialog'" cierra el modal nativamente sin requerir event listeners extra de JS.
     d.innerHTML = `
         <h3>${title}</h3>
         <div style="margin-bottom: 15px;">${htmlContent}</div>

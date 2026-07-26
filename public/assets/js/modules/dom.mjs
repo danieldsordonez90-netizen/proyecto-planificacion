@@ -1,3 +1,9 @@
+/*
+Author: jose.inestroza@unah.edu.hn, danields.olivares@unah.hn, christian.vijil@unah.hn, ivan.diaz@unah.hn
+Version: 0.2.0
+Date: 2026/07/18
+*/  
+
 import { h, p, b, li, ul, ol, tag } from './dom-basic-html.mjs';
 import { box } from './dom-box.mjs';
 import { columns } from './dom-columns.mjs';
