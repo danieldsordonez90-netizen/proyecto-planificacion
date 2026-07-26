@@ -1,5 +1,5 @@
 /*
-Author: jose.inestroza@unah.edu.hn, danields.olivares@unah.hn, christian.vijil@unah.hn, ivan.diaz@unah.hn
+Author: jose.inestroza@unah.edu.hn, https://developer.mozilla.org/en-US/, danields.olivares@unah.hn, christian.vijil@unah.hn, ivan.diaz@unah.hn
 Version: 0.1.8
 Date: 2026/07/18
 */  
